@@ -1,0 +1,103 @@
+.font_family{
+	font-family: PingFangSC-Regular;
+}
+.pd101{
+	width: 94%;
+	height:40%;
+	padding: 0px;margin: 39% auto;
+	background: white;
+	position: relative;
+}
+.pd101 .masks{
+	width: 100%;
+	/*height: 0.32rem;*/
+	background: red;
+	position: absolute;
+	margin-top: 0.1rem;
+}
+.pd101 .masks span{
+	display: inline-block;
+	font-size: 15px;
+	color: #333333;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+.pd101 .msk_tf{
+	width:100%;
+	/*height: 0.3rem;*/
+	background: yellow;
+	position: absolute;
+	margin-top: 0.54rem;
+}
+.pd101 .msk_tf span{
+	display: inline-block;
+	font-size: 13px;
+	color: #FF0000;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+.pd101 .D_inpt{
+	width:100%;
+	height: 0.64rem;
+	background: blueviolet;
+	position: absolute;
+	margin-top: 1rem;
+}
+.pd101 .D_inpt .D_inpts{
+	width:90%;
+	height: 100%;
+	background: red;
+	margin: 0 auto;
+}
+.pd101 .D_inpt .D_inpts .d1{
+	width:54%;
+	height:100%;
+	background: blue;
+	display: inline-block;
+}
+.pd101 .D_inpt .D_inpts .d1 input{
+	color: #888888;
+	height: 100%;
+	width: 100%;
+	-webkit-appearance: none;
+	text-align: center;
+	border:none ;
+	font-size: 18px;
+}
+.pd101 .D_inpt .D_inpts .d2{
+	width:44%;
+	height:100%;
+	background: pink;
+	display: inline-block;
+	float: right;
+}
+.pd101 .D_inpt .D_inpts .d2 .D_click1{
+	width:63.5%;
+	height:100%;
+	background: lime;
+	display: inline-block;
+	float: left;
+}
+.pd101 .D_inpt .D_inpts .d2 .D_click1 span{
+	display: inline-block;
+	/*width:100%;*/
+	/*height:100%;*/
+	text-align: center;
+	font-size: 18px;
+	margin: 7% 20% 7% 20%;
+	/*margin: 7% auto;*/
+}
+.pd101 .D_inpt .D_inpts .d2 .D_click2{
+	width: 38.39px;;
+	height:100%;
+	background: deeppink;
+	display: inline-block;
+	float: left;
+	margin-left: 4%;
+}
+.pd101 .D_inpt .D_inpts .d2 .D_click2 img{
+	width:100%;
+	height:100%;
+}

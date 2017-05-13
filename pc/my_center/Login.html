@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		<link href="css/animate.css" rel="stylesheet">
+	<!--	<link href="css/bootstrap.min.css" rel="stylesheet">-->
+		<link href="css/base.css" rel="stylesheet" type="text/css">
+		<link href="css/login.css" rel="stylesheet" type="text/css">
+		<link href="css/ui-dialog.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="css/demo.css">
+		<link rel="stylesheet" href="css/validate.css">
+		<style>
+			/*提示层*/			
+			.tishi {
+				position: absolute;
+				top: 45%;
+				left: 50%;
+				width: 250px;
+				height: 40px;
+				margin: -20px 0 0 -125px;
+				background: rgba(0, 0, 0, 0.5);
+				border-radius: 5px;
+				display: none;
+			}			
+			.tishi span {
+				font-size: 16px;
+				display: inline-block;
+				width: 100%;
+				line-height: 40px;
+				text-align: center;
+				color: white;
+			}
+			/*弹出层*/			
+			.menu {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				z-index: 111;
+				background: rgba(0, 0, 0, 0.7);
+			}			
+			#Dform {
+				height: 100%;
+			}			
+			#form1 {
+				height: 100%;
+			}			
+			.main .item,
+			.main .item-captcha .input-info {
+				margin-bottom: 6px;
+			}
+		</style>
+		<script src="lib/js/jquery.js"></script>
+		<script src="js/login.js"></script>
+		<script>
+			$(function() {
+				//			关闭注册页按钮
+				$('.close1').click(function() {
+					$('.menu').hide();
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="menu">
+			<div id="Dform">
+				<form id="form1">
+					<div class="common-wrapper">
+						<div class="close1"><img src="images/close2.png" alt=""></div>
+						<div class="main" style="padding: 60px 60px 0;">
+							<div class="logo" style="padding: 20px 0px 50px 0px;">
+								<img src="images/logo2.png"></div>
+							<div class="item item-tips" style="display: none;">
+								<div class="err-msg">
+								</div>
+							</div>
+							<div class="item item-username phone" style="margin-bottom: 16px;">
+								<div class="phone_p"><img src='images/phone.png' alt=""></div>
+								<input style="padding-left: 32px;background-color: white;background-size: 80% auto;border-bottom: 1px solid #e2e2e2 !important;border: none;" data-validate="phone" name="phone" id="telphone" class="txt-input txt-tel" type="text" placeholder="请输入手机号">
+							</div>
+							<div class="item item-password phone">
+								<div class="phone_p"><img src='images/password.png' alt="" style="width: 23px;height: 31px;"></div>
+								<input style="padding-left: 32px;background-color: white;background-size: 80% auto;border-bottom: 1px solid #e2e2e2 !important;border: none;" type="password" id="pwd" class="txt-input txt-password" placeholder="请输入密码" name="password">
+							</div>
+							<div class="item item-btns" style="margin-top: 16px !important;">
+								<input id="btn" class="btn-login" type="button" value="登录">
+							</div>
+							<div class="item item-btns" style="margin-top: 16px !important;">
+								<a href="../my_center/register.html" id="btn_login" class="btn-login" style="cursor:pointer;background: white;border: 1px solid #c11920;color: #c11920;font-family: PingFangSC-Regular;">注册</a>
+							</div>
+							<div class="going">
+								<a href="../my_center/forget_password.html" class="btn-login2" style="color: #999;font-family: PingFangSC-Regular;font-size: 15px;">忘记密码?</a>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!--提示信息-->
+			<div class="tishi">
+				<span id="tishi"></span>
+			</div>
+		</div>
+		</div>
+	</body>
+
+</html>

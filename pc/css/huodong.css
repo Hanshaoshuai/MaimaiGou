@@ -1,0 +1,86 @@
+body{font-family:"微软雅黑";
+	/*color: "|"灰  #c8c8c8; 边框 #ededed; 字体灰 #8c8c8c; 枣红色 #ca151e; 字体浅灰 #bbbbbb*/
+	font-size:12px;
+	margin:0;
+	padding:0;
+	border:none;
+}
+html,div,p,span,form,legend,fieldset,h1,h2,h3,h4,h5,h6,hr,ul,li,ol,dl,dd,dt,nr{
+	margin:0;padding:0;
+	border:none;
+}
+button,img,a,input,textarea,th,td,table,lable{
+	margin:0;padding:0;
+}
+a{text-decoration:none;color:#666666}
+ul,li,ol,dl,dd,dt{list-style:none}
+img{border:none}
+/*.clear{height:0;overflow:hidden;font-size:0;clear:both}*/
+span,font{display:inline-block;}
+a{display:inline-block;}
+html,body{width:100%;height:100%}
+
+
+
+
+
+
+.content{width:1523px;height:auto;margin:0 auto;overflow:hidden;}
+.content .content1{width:1523px;height:593px;margin:0 auto;}
+.content .content1 .content1_1{width:1523px;height:443px;}
+.content .content1 .content1_1 img{height:443px;}
+.content .content1 .content1_2{width:1523px;height:150px;}
+.content .content1 .content1_2 ul li{width:100%;flat:left;text-align: center;color:#3e3a39;}
+.content .content1 .content1_2 ul li:nth-child(1){height:54px;margin-top:28px;}
+.content .content1 .content1_2 ul li:nth-child(1) span{font-size: 38px;}
+.content .content1 .content1_2 ul li:nth-child(1) font{
+	font-family: 'Arial Normal', 'Arial';
+	font-weight: 400;
+	font-style: normal;
+	font-size: 20px;
+	padding:0 18px 0 18px;
+}
+.content .content1 .content1_2 ul li:nth-child(2) span{
+	font-size: 14px;
+	word-spacing:12px;
+	text-rendering: optimizeLegibility;
+	font-kerning: normal;
+	-moz-font-feature-settings: "kern";
+}
+
+
+.content .content2{width:1198px;height:auto;overflow:hidden;margin:0 auto;}
+.content .content2 .content2_1{width:1198px;height:511px;}
+.content .content2 .content2_1 ul li:nth-child(1){width:465px;height:465px;float:left;border-radius:235px;overflow:hidden;}
+.content .content2 .content2_1 ul li:nth-child(1) img{width:465px;float:left;}
+
+
+.content .content2 .content2_1 ul li:nth-child(2){width:677px;height:511px;float:right;}
+.content .content2 .content2_1 ul li:nth-child(2) p:nth-child(1){width:677px;height:107px;float:left;margin:77px 0 30px 0;}
+.content .content2 .content2_1 ul li:nth-child(2) p:nth-child(1) img{width:285px;height:107px;float:left;margin:0 18px 0 18px;}
+.content .content2 .content2_1 ul li:nth-child(2) p:nth-child(1) span{width:240px;line-height:32px;float:left;font-size: 16px;}
+.content .content2 .content2_1 ul li:nth-child(2) p:nth-child(1) font{width:190px;padding-left:50px;float:left;font-size: 16px;}
+.content .content2 .content2_1 ul li:nth-child(2) p:nth-child(1) a{float:left;padding:10px 42px;margin:16px 0 0 10px;background:#c30d23;color:#fff;border-radius:4px;}
+
+
+.content .content2 .content2_1 ul li:nth-child(2) p:nth-child(2){width:648px;height:325px;float:left;}
+.content .content2 .content2_1 ul li:nth-child(2) p:nth-child(2) span{width:100%;text-align: center;float:left;font-size: 16px;line-height: 45px;color:#949494;}
+.content .content2 .content2_1 ul li:nth-child(2) p:nth-child(2) img{float:left;}
+.content .content2 .content2_1 ul li:nth-child(2) p:nth-child(2) .img{margin-left:160px;}
+
+
+.content .content3{width:1258px;height:auto;margin:0 auto;overflow:hidden;}
+.content .content3 .content3_1{width:580px;height:280px;float:left;margin-left:30px;border:1px #d7d7d7 solid;}
+.content .content3 .content3_1 ul li:nth-child(1){width:360px;height:284px;float:left;position:relative;}
+.content .content3 .content3_1 ul li:nth-child(1) img{position:absolute;margin:auto;left:24px;top:0; bottom:0;height:264px;}
+
+
+.content .content3 .content3_1 ul li:nth-child(2){width:163px;height:284px;float:left;text-align: center;}
+.content .content3 .content3_1 ul li:nth-child(2) img{width:83px;margin-top:6px;}
+.content .content3 .content3_1 ul li:nth-child(2) h3{width:163px;float:left;font-weight: normal;font-size: 18px;line-height: 46px;}
+.content .content3 .content3_1 ul li:nth-child(2) font{width:163px;float:left;font-size: 18px;color:#999999;}
+.content .content3 .content3_1 ul li:nth-child(2) span{width:163px;float:left;font-size: 18px;line-height: 68px;}
+.content .content3 .content3_1 ul li:nth-child(2) a{padding:10px 42px;background:#c30d23;color:#fff;border-radius:4px;}
+
+
+

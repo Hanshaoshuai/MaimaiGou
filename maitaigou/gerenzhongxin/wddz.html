@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="lib/css/reset.css" />
+		<link rel="stylesheet" href="css/wddz.css" />
+		<script type="text/javascript">
+			/*判断浏览器版本是否过低*/
+			$(document).ready(function() {
+				var b_name = navigator.appName;
+				var b_version = navigator.appVersion;
+				var version = b_version.split(";");
+				var trim_version = version[1].replace(/[ ]/g, "");
+				if(b_name == "Microsoft Internet Explorer") {
+					/*如果是IE6或者IE7*/
+					if(trim_version == "MSIE7.0" || trim_version == "MSIE6.0" || trim_version == "MSIE8.0") {
+						var html = '<p style="width: 100%; height: 700px; font-size: 50px; line-height: 700px; text-align: center;">您的浏览器版本过低，请升级或者更换浏览器</p>';
+						$('body').html(html);
+						//然后跳到需要连接的下载网站  
+						//window.location.href="http://jiaoxueyun.com/download.jsp";  
+					}
+				}
+			});
+		</script>
+	</head>
+
+	<body>
+		<!--头部-->
+		<div class="header">
+			<div class="header_0">
+				<div class="header_1 clearfix">
+					<div class="header_1_1">
+						<span>新生活 麦买购</span>
+					</div>
+					<div class="header_1_2">
+						<a href="#">个人中心</a>
+						<!--<a href="#">登陆</a>
+						<a href="#">注册</a>-->
+						<a href="#">
+							<span>wllinfo</span>
+							<img src="images/vip.png" alt="" />
+						</a>
+						<a href="#" class="header_1_2_a">
+							<img src="images/MAIL.png" alt="" />
+							<span>2</span>
+						</a>
+						<a href="#">用户反馈</a>
+					</div>
+				</div>
+			</div>
+			<div class="header_2 clearfix">
+				<div class="header_2_1">
+					<img class="img1" src="images/logo.png" />
+				</div>
+				<div class="header_2_2">
+					<div class="header_2_2_input clearfix">
+						<input type="text" />
+						<span>搜索</span>
+					</div>
+				</div>
+				<div class="header_2_2_cart">
+					<a href="">
+						<img src="images/购物车.png" alt="" />
+						<span>我的购物车</span>
+						<font>2</font>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="header_30">
+			<div class="header_3">
+				<a class="a1" href="#">首页</a>
+				<a id="show" href="#">母婴
+					<!--<div class="show">
+						<ul>
+							<li class="img3"><img src="images/商品图.png" alt="" /></li>
+							<li><img src="images/商品图.png" alt="" /></li>
+							<li><img src="images/商品图.png" alt="" /></li>
+							<li><img src="images/商品图.png" alt="" /></li>
+							<li><img src="images/商品图.png" alt="" /></li>
+							<li><img src="images/商品图.png" alt="" /></li>
+							<li><img src="images/商品图.png" alt="" /></li>
+						</ul>
+					</div>-->
+				</a>
+				<a href="#">美容护肤</a>
+				<a href="#">女装</a>
+				<a href="#">食品</a>
+				<a href="#">家具</a>
+				<a href="#">汽车</a>
+				<a href="#">数码家电</a>
+				<a href="#" class="header_3_a">
+					<span>更多</span>
+					<img src="images/ARROW---UP.png" alt="" />
+				</a>
+			</div>
+		</div>
+		<!--个人中心-->
+		<div class="connet">
+			<div class="w clearfix connet_w">
+				<div class="connet_l fl">
+					<div class="con_a">
+						<img src="images/logo.png" alt="" />
+					</div>
+					<div class="con_b">
+						<div class="con_b_1 clearfix">
+							<span>wllinfo</span>
+							<img src="images/vip-1.png" alt="" />
+						</div>
+						<div class="con_b_2 clearfix">
+							<span>实名认证</span>
+							<img src="images/shiming.png" alt="" />
+						</div>
+						<div class="con_b_3 clearfix">
+							<span>修改密码</span>
+							<img src="images/PEN-2.png" alt="" />
+						</div>
+					</div>
+					<!--<div class="con_c">
+					</div>-->
+					<div class="con_d">
+						<p>2017/04/03-2018/04/03</p>
+					</div>
+					<div class="con_e"></div>
+					<ul id="ul">
+						<li class="active">我的订单</li>
+						<li>我的资产</li>
+						<li>我的团队</li>
+						<li>我的二维码</li>
+						<li>我的收藏</li>
+						<li>地址管理</li>
+						<li>银行卡管理</li>
+					</ul>
+					<div class="con_f tl" id="con_div">
+						<p>原密码：<input type="text" /></p>
+						<p>新密码：<input type="text" /></p>
+						<p>确认密码：<input type="text" /></p>
+						<button id="btn1">确认修改</button>
+						<button id="btn2">取消</button>
+					</div>
+				</div>
+				<div class="connet_r fr address_administration">
+					<div class="join_address_top">
+						<span class="address_text1">地址最多20条，还能保存8条</span>
+						<span id="site" class="address_text2">+添加地址</span>
+					</div>
+					<div class="address_content">
+						<div class="navigation clearfix">
+							<span class="user_name">收货人</span>
+							<span class="user_phone">联系电话</span>
+							<span class="user_address">收货地址</span>
+						</div>
+						<div class="addressS">
+							<ul id="list">
+								<li>
+									<div class="addressS_text">
+										<div class="addressS_txt1 clearfix">
+											<span class="addressS_txt1_span1">张三</span>
+											<span class="addressS_txt1_span2">13520310247</span>
+											<span class="addressS_txt1_span3">浙江省 杭州市 滨江区 建业路511号</span>
+										</div>
+									</div>
+									<div class="addressS_txt clearfix">
+										<a href="javascript:;" class="addressS_txt_a1">默认地址</a>
+										<a class="compile" href="javascript:;" class="compile">编辑</a>
+										<a class="remove" href="javascript:;" class="clear">删除</a>
+									</div>
+								</li>
+								<li>
+									<div class="addressS_text">
+										<div class="addressS_txt1 clearfix">
+											<span class="addressS_txt1_span1">张三</span>
+											<span class="addressS_txt1_span2">13520310247</span>
+											<span class="addressS_txt1_span3">浙江省 杭州市 滨江区 建业路511号</span>
+										</div>
+									</div>
+									<div class="addressS_txt clearfix">
+										<a href="javascript:;" class="addressS_txt_a1">默认地址</a>
+										<a class="compile" href="javascript:;" class="compile">编辑</a>
+										<a class="remove" href="javascript:;" class="clear">删除</a>
+									</div>
+								</li>
+								<li>
+									<div class="addressS_text">
+										<div class="addressS_txt1 clearfix">
+											<span class="addressS_txt1_span1">张三</span>
+											<span class="addressS_txt1_span2">13520310247</span>
+											<span class="addressS_txt1_span3">浙江省 杭州市 滨江区 建业路511号</span>
+										</div>
+									</div>
+									<div class="addressS_txt clearfix">
+										<a href="javascript:;" class="addressS_txt_a1">默认地址</a>
+										<a class="compile" href="javascript:;" class="compile">编辑</a>
+										<a class="remove" href="javascript:;" class="clear">删除</a>
+									</div>
+								</li>
+								<li>
+									<div class="addressS_text">
+										<div class="addressS_txt1 clearfix">
+											<span class="addressS_txt1_span1">张三</span>
+											<span class="addressS_txt1_span2">13520310247</span>
+											<span class="addressS_txt1_span3">浙江省 杭州市 滨江区 建业路511号</span>
+										</div>
+									</div>
+									<div class="addressS_txt clearfix">
+										<a href="javascript:;" class="addressS_txt_a1">默认地址</a>
+										<a class="compile" href="javascript:;" class="compile">编辑</a>
+										<a class="remove" href="javascript:;" class="clear">删除</a>
+									</div>
+								</li>
+								<li>
+									<div class="addressS_text">
+										<div class="addressS_txt1 clearfix">
+											<span class="addressS_txt1_span1">张三</span>
+											<span class="addressS_txt1_span2">13520310247</span>
+											<span class="addressS_txt1_span3">浙江省 杭州市 滨江区 建业路511号</span>
+										</div>
+									</div>
+									<div class="addressS_txt clearfix">
+										<a href="javascript:;" class="addressS_txt_a1">默认地址</a>
+										<a class="compile" href="javascript:;" class="compile">编辑</a>
+										<a class="remove" href="javascript:;" class="clear">删除</a>
+									</div>
+								</li>
+								<li>
+									<div class="addressS_text">
+										<div class="addressS_txt1 clearfix">
+											<span class="addressS_txt1_span1">张三</span>
+											<span class="addressS_txt1_span2">13520310247</span>
+											<span class="addressS_txt1_span3">浙江省 杭州市 滨江区 建业路511号</span>
+										</div>
+									</div>
+									<div class="addressS_txt clearfix">
+										<a href="javascript:;" class="addressS_txt_a1">默认地址</a>
+										<a class="compile" href="javascript:;" class="compile">编辑</a>
+										<a class="remove" href="javascript:;" class="clear">删除</a>
+									</div>
+								</li>
+								<li>
+									<div class="addressS_text">
+										<div class="addressS_txt1 clearfix">
+											<span class="addressS_txt1_span1">张三</span>
+											<span class="addressS_txt1_span2">13520310247</span>
+											<span class="addressS_txt1_span3">浙江省 杭州市 滨江区 建业路511号</span>
+										</div>
+									</div>
+									<div class="addressS_txt clearfix">
+										<a href="javascript:;" class="addressS_txt_a1">默认地址</a>
+										<a class="compile" href="javascript:;" class="compile">编辑</a>
+										<a class="remove" href="javascript:;" class="clear">删除</a>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!--<div class=""></div>-->
+
+			</div>
+			<!--猜你喜欢-->
+			<div class="nav_cxh w">
+				<div class="nav_4 clearfix">
+					<div class="nav_2_1 clearfix">
+						<span>热卖商品</span>
+						<font>想你所想</font>
+						<a href="#">查看更多>></a>
+					</div>
+					<div class="nav_4_1">
+						<img src="images/商品图.png" alt="" />
+						<span>某某牌安全座椅</span>
+						<font>1200麦</font>
+					</div>
+					<div class="nav_4_1">
+						<img src="images/商品图.png" alt="" />
+						<span>某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅</span>
+						<font>1200麦</font>
+					</div>
+					<div class="nav_4_1">
+						<img src="images/商品图.png" alt="" />
+						<span>某某牌安全座椅</span>
+						<font>1200麦</font>
+					</div>
+					<div class="nav_4_1 nav_4_12">
+						<img src="images/商品图.png" alt="" />
+						<span>某某牌安全座椅</span>
+						<font>1200麦</font>
+					</div>
+				</div>
+			</div>
+			<!--底部-->
+			<div class="nav_7">
+				<ul class="clearfix">
+					<li class="nav_7_1">
+						<span>客服电话</span>
+						<h3>4008-868-097</h3>
+						<font>9:00-22:00</font>
+						<a href="#">用户反馈</a>
+					</li>
+					<li class="nav_7_2">
+						<h3>麦买购</h3>
+						<font>原创生活类电商品牌，秉承网易一贯的严谨态度，我们深入世界各地，从源头全程严格把控商品生产环节，力求帮消费者甄选到优质的商品</font>
+					</li>
+					<li class="nav_7_3">
+						<span>关注我们</span>
+						<a href=""><img src="images/二维码.png" alt="" /></a>
+						<font>微信公众号</font>
+					</li>
+				</ul>
+			</div>
+			<div class="footer">
+				<div class="footer_a">
+					<div class="footer_1 w">
+						<ul>
+							<li>
+								<img src="images/矢量智能对象.png" alt="" />
+								<span>30天无忧退货</span>
+							</li>
+							<li>
+								<img src="images/矢量智能对象1-拷贝.png" alt="" />
+								<span>满88元免邮费</span>
+							</li>
+							<li class="footer_1_li">
+								<img src="images/矢量智能对象.png" alt="" />
+								<span>30天无忧退货</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer_2">
+					<p class="footer_2_p1">
+						<a href="">关于我们</a>|
+						<a href="">商务合作</a>|
+						<a href="">企业采购</a>
+					</p>
+					<p class="footer_2_p2">
+						<font>网易公司版权所有 © 1997-2017 食品经营许可证：JY13301080111719</font>
+					</p>
+					<div>
+						<img src="images/u393.png" alt="" />
+					</div>
+				</div>
+			</div>
+			<!--APP下载-->
+			<!--<div class="app">
+			<div class="app1">
+				<img src="images/订单详情页/u2100.png" alt="">
+				<span>下载APP</span>
+			</div>
+			<div class="app2">
+				<img src="images/订单详情页/u2106.jpg" alt="">
+			</div>
+		</div>-->
+
+			<!--添加地址-->
+			<div class="zhezhao" id="wicket">
+				<div class="zhezhao_a">
+					<div class="zhezhao_a_1">
+						<h3>添加地址</h3>
+						<a id="delete" href="javascript:;"></a>
+					</div>
+					<div class="zhezhao_a_2">
+						<div>
+							<span class="zhezhao_a_2_span">收货人:</span>
+							<input id="inp1" class="zhezhao_a_2_inp1" type="text" />
+							<span>联系电话:</span>
+							<input id="inp1" type="text" />
+						</div>
+						<div>
+							<span>收货地址:</span>
+							<div class="zhezhao_a_2_sel">
+								<div class="zhezhao_a_2_btn">
+									<p class="inp1" id="select1">浙江省</p>
+								</div>
+								<ul class="contulli">
+									<li>浙江省</li>
+									<li>湖南省</li>
+									<li>湖北省</li>
+								</ul>
+							</div>
+							<div class="zhezhao_a_2_sel">
+								<div class="zhezhao_a_2_btn">
+									<p class="inp1" id="select2">杭州市</p>
+								</div>
+								<ul class="contulli">
+									<li>杭州市</li>
+									<li>宁波市</li>
+									<li>温州市</li>
+								</ul>
+							</div>
+							<div class="zhezhao_a_2_sel">
+								<div class="zhezhao_a_2_btn">
+									<p class="inp1" id="select3">杭州市</p>
+								</div>
+								<ul class="contulli">
+									<li>杭州市</li>
+									<li>宁波市</li>
+									<li>温州市</li>
+								</ul>
+							</div>
+						</div>
+						<div>
+							<span class="zhezhao_a_2_span1">详细地址:</span>
+							<textarea id="text"></textarea>
+						</div>
+						<div>
+							<input class="zhezhao_a_2_chk" type="checkbox" />
+							<span class="zhezhao_a_2_chkspan">设为默认</span>
+							<a id="confirm" class="zhezhao_a_2_a1" href="javascript:;">确定</a>
+							<a id="cancel" class="zhezhao_a_2_a2" href="javascript:;">取消</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script src="lib/js/jquery.js"></script>
+			<script src="js/wddz.js"></script>
+	</body>
+
+</html>

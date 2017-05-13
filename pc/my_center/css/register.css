@@ -1,0 +1,493 @@
+﻿@charset "utf-8";
+/* CSS Document */
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: none;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#pageContainer{
+    position:relative;
+}
+
+.common-wrapper {
+    width: 500px;
+    height: 600px;
+    position: absolute;
+    /* max-width: 700px; */
+    /* min-width: 640px; */
+    overflow: hidden;
+    /* margin: 0 auto; */
+    font-size: 16px;
+    /* padding-top: 60px; */
+    top: 50%;
+    left: 50%;
+    margin: -250px 0 0 -300px;
+    background-color: white;
+}
+
+.common-wrapper .main {
+    padding: 30px 60px;
+}
+
+.common-wrapper .main .logo {
+    width: 100%;
+    padding: 20px 0px 20px 0px;
+    text-align: center;
+}
+
+.common-wrapper .main .logo img{
+    width:45%;
+}
+
+.main .item_forget_psw{
+    margin-bottom: 16px;
+}
+/*.main .item, .main .item-captcha .input-info {*/
+    /*margin-bottom: 6px;*/
+/*}*/
+
+.main .item {
+    position: relative;
+    width: 100%;
+}
+
+.phone .phone_p{
+    width: 30px;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+}
+.phone .phone_p img {
+    line-height: 28px;
+}
+.going{
+    float: right;
+}
+.going a{
+    font-size: 14px;
+    color: #000;
+}
+
+.main .item .txt-input {
+    width: 100%;
+    height: 44px;
+    line-height: normal;
+    padding: 0;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    background: #F8F8F8;
+    font-family: '\5fae\8f6f\96c5\9ed1';
+    font-size: 16px;
+    color: #252525;
+    -webkit-appearance: none;
+}
+
+.main .item .txt-captcha, .main .item .txt-password, .main .item .txt-tel, .main .item .txt-username {
+    padding-left: 15px;
+}
+
+.main .item .txt-tel{
+    background-color:#F8F8F8;
+    background-size: 80% auto;
+}
+
+.main .item .txt-password{
+
+    background-color:#F8F8F8;
+    background-size: 80% auto;
+}
+
+.main .item-btns .btn-login, .main .item-btns .btn-next {
+    display: inline-block;
+    width: 100%;
+    height: 44px;
+    border-radius: 3px;
+    background: #c11920;
+    text-decoration: none;
+    line-height: 39px;
+    text-align: center;
+    font-size: 17px;
+    color: #fff;
+    border: none;
+}
+
+.main .item-btns .btn-login2 {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    background: #fff;
+    text-decoration: none;
+    line-height: 39px;
+    text-align: center;
+    font-size: 17px;
+    color: #f15353;
+    border:1px solid #f15353;
+    cursor:pointer;
+}
+
+.main .item-btns .btn-disabled {
+    background: #e2e2e2;
+    cursor: default;
+    color: #bdbdbd;
+}
+
+.main .item-login-option {
+    padding-top: 20px;
+    margin-bottom: 34px;
+    font-size: 14px;
+}
+
+.main .item-login-option .register-free {
+    float: left;
+    width: 50%;
+}
+
+.main .item-login-option .register-free a, .main .item-login-option .retrieve-password a {
+    color: #686868;
+    font-size: 15px;
+    text-decoration: underline;
+    height: 14px;
+    display: inline-block;
+}
+
+.main .item-login-option .retrieve-password {
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+
+/**注册**/
+.main .item-captcha #captcha-img {
+    position: absolute;
+    right: 0;
+    top: 9px;
+    width: 79px;
+    height: 25px;
+    padding-left: 7px;
+    border-left: 1px solid #d7d7d7;
+}
+
+.main .item .txt-phone {
+    padding-left: 15px;
+    width: 53.31034482758621%;
+}
+
+.main .item-phone .btn-retransmit-disabled {
+    box-shadow: none;
+    border: 1px solid #e2e2e2;
+    background: #e2e2e2;
+    cursor: default;
+    color: #bdbdbd;
+}
+
+.main .item-phone .btn-retransmit {
+    float: right;
+    overflow: hidden;
+    width: 44.13793103448276%;
+    height: 44px;
+    /*border: 1px solid #c9c9c9;*/
+    border-radius: 3px;
+    background: #c11920;
+    line-height: 44px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    color:white;
+    /*border-style: none;*/
+    outline:none;
+}
+
+.main .item-sms-captcha .txt-sms-captcha {
+    padding-left: 15px;
+}
+
+.main .item-sms-captcha .err-tips {
+    margin: 0 0 12px;
+    font-size: 13px;
+    color: #cccccc;
+}
+
+.main .item-sms-captcha .err-tips a {
+    color: #3e3a39;
+    display: inline-block;
+    height: 13px;
+    text-decoration: underline;
+}
+.mask{
+            display: none;
+            position:absolute;
+            width:100%;
+            height:100%;
+            top:0px;
+            left:0px;
+            background-color:#000;
+            z-index:99998;
+            filter:alpha(opacity=50);  /*支持 IE 浏览器*/
+            -moz-opacity:0.50; /*支持 FireFox 浏览器*/
+            opacity:0.50;  /*支持 Chrome, Opera, Safari 等浏览器*/
+        }
+        .agreement{
+            display: none;
+            position:absolute;
+            top:5%;
+            left:5%;
+            right:5%;
+            bottom:5%;
+            width:90%;
+            height:90%;
+            padding:25px 10px 10px 10px;
+            line-height:25px;
+            overflow:hidden;
+            background-color:#fff;
+            z-index: 99999;
+            -webkit-animation:bounceIn 1s .2s ease both;
+            -moz-animation:bounceIn 1s .2s ease both;
+        }
+
+        .agreement .content{
+            width:100%;
+            height:100%;
+            line-height:25px;
+            overflow:scroll;
+        }
+
+        .close1{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+
+
+
+
+
+       /*遮罩层*/
+.common-wrapper1 {
+    width: 94%;
+    /*position: absolute;*/
+    overflow: hidden;
+    margin: 40% auto;
+    font-size: 16px;
+    /*padding-top:60px;*/
+    background-color: white;
+    border-radius: 8px;
+}
+
+.common-wrapper1 .main1 {
+    padding: 0px 24px 0;
+}
+
+.common-wrapper1 .main1 .logo1 {
+    width: 100%;
+    padding: 20px 0px 20px 0px;
+    text-align: center;
+}
+
+.common-wrapper1 .main1 .logo1 img{
+    width:45%;
+}
+
+.main1 .item1, .main1 .item-captcha1 .input-info1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.main1 .item2, .main1 .item-captcha1 .input-info1 {
+    margin-top: 10px;
+    /*margin-bottom: 10px;*/
+}
+.main1 .item3, .main1 .item-captcha1 .input-info1 {
+    margin-top: 4px;
+    /*margin-bottom: 10px;*/
+}
+.main1 .item4, .main1 .item-captcha1 .input-info1 {
+    margin-top: 20px;
+    /*margin-bottom: 10px;*/
+}
+
+.main1 .item1 {
+    position: relative;
+    width: 100%;
+}
+.main1 .item1 .txt-phone1 {
+    text-align: center;
+    /*padding-left: 15px;*/
+    width: 53.31034482758621%;
+}
+.main1 .item1 .txt-input1 {
+    /*width: 100%;*/
+    height: 44px;
+    line-height: normal;
+    padding: 0;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    background: #F8F8F8;
+    font-family: '\5fae\8f6f\96c5\9ed1';
+    font-size: 16px;
+    color: #252525;
+    -webkit-appearance: none;
+}
+
+.main1 .item1 .txt-captcha1, .main1 .item1 .txt-password1, .main1 .item1 .txt-tel1, .main1 .item1 .txt-username1 {
+    padding-left: 15px;
+}
+
+.main1 .item1 .txt-tel1{
+    background-color:#F8F8F8;
+    background-size: 80% auto;
+}
+
+.main1 .item1 .txt-password1{
+
+    background-color:#F8F8F8;
+    background-size: 80% auto;
+}
+
+.main1 .item-btns1 .btn-login1, .main1 .item-btns1 .btn-next1 {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    background: #c11920;
+    text-decoration: none;
+    line-height: 39px;
+    text-align: center;
+    font-size: 17px;
+    color: #fff;
+    border: none;
+}
+
+.main1 .item-btns1 .btn-login1 {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    background: #c11920;
+    text-decoration: none;
+    line-height: 39px;
+    text-align: center;
+    font-size: 17px;
+    color: white;
+    border:1px solid #f15353;
+    cursor:pointer;
+}
+.main1 .item-btns1 .btn-login5 {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    background: #ffffff;
+    text-decoration: none;
+    line-height: 39px;
+    text-align: center;
+    font-size: 17px;
+    color: #c11920;
+    border:1px solid #c11920;
+    cursor:pointer;
+}
+
+.main1 .item-btns1 .btn-login2 {
+    font-family: PingFangSC-Regular;
+    display: inline-block;
+    width: 100%;
+    /*height: 40px;*/
+    /*border-radius: 3px;*/
+    background: #fff;
+    text-decoration: none;
+    /*line-height: 39px;*/
+    text-align: center;
+    font-size: 13px;
+    color: #ff0000;
+    /*border:1px solid #f15353;*/
+    cursor:pointer;
+}
+.main1 .item-btns1 .btn-login3 {
+    display: inline-block;
+    width: 100%;
+    /*height: 40px;*/
+    /*border-radius: 3px;*/
+    background: #fff;
+    text-decoration: none;
+    /*line-height: 39px;*/
+    text-align: center;
+    font-size: 15px;
+    color: #333333;
+    /*border:1px solid #f15353;*/
+    cursor:pointer;
+    font-family: PingFangSC-Regular;
+}
+
+.main1 .item-btns1 .btn-disabled1 {
+    background: #e2e2e2;
+    cursor: default;
+    color: #bdbdbd;
+}
+
+.main1 .item-login-option1 {
+    padding-top: 20px;
+    margin-bottom: 34px;
+    font-size: 14px;
+}
+
+.main1 .item-login-option1 .register-free1 {
+    float: left;
+    width: 50%;
+}
+
+.main1 .item-login-option1 .register-free1 a, .main1 .item-login-option1 .retrieve-password1 a {
+    color: #686868;
+    font-size: 15px;
+    text-decoration: underline;
+    height: 14px;
+    display: inline-block;
+}
+
+.main1 .item-login-option1 .retrieve-password1 {
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+.main1 .item-phone1 .btn-retransmit1 {
+     float: right;
+     overflow: hidden;
+     width: 44.13793103448276%;
+     height: 44px;
+     /*border: 1px solid #f15353;*/
+     border-radius: 3px;
+     background: #fff;
+     line-height: 44px;
+     text-align: center;
+     cursor: pointer;
+     font-size: 14px;
+     color: #f15353;
+ }
+.main1 .item-phone1 .btn-retransmit1 .D_Img{
+    float: left;
+    overflow: hidden;
+    width:56.655858875%;
+    height: 100%;
+    /*background: #ff0000;*/
+}
+.main1 .item-phone1 .btn-retransmit1 .D_Img img{
+   width: 100%;
+   height:100%;
+    display: block;
+}
+.main1 .item-phone1 .btn-retransmit1 .img{
+    float: right;
+    /*width: 41.13793103448276%;*/
+    height: 100%;
+    /*background: red;*/
+}
+.main1 .item-phone1 .btn-retransmit1 .img img{
+    width: 0.716666rem;
+    height: 0.716666rem;
+    float:right;
+}
+
+
+.zhejiang{width:200px;position:absolute;right:0;bottom:0;z-index: 999;padding-bottom:0.2rem;}

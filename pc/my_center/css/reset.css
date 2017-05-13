@@ -1,0 +1,107 @@
+/*公共样式--开始*/
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select{
+    margin: 0;
+    padding: 0;
+}
+*{box-sizing: border-box;}
+html, body {
+    min-height: 100%;
+}
+
+body {
+    font-family:"微软雅黑", Arial, Helvetica, Sans-Serif;
+    font-size:14px;
+    color:#000;
+}
+h1, h2, h3, h4, h5, h6{font-weight:normal;}
+i{
+    font-style: normal;
+}
+ul,ol {
+    list-style: none;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+    color: #232323;
+}
+a:focus{
+	outline:none;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+	border-spacing:0; 
+} 
+
+input, textarea {
+    outline: none;
+    border: none;
+}
+
+
+button{ 
+ 	outline:none; 
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after {
+    content: ".";
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+    overflow:hidden;
+}
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+.tl {
+    text-align: left;
+}
+
+.tc {
+    text-align: center;
+}
+
+.tr {
+    text-align: right;
+}
+
+.ellipse {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.inline{
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+/*公共类样式*/
+.w{
+    width: 1110px;
+    margin: 0 auto;
+}

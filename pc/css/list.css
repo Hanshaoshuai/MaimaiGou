@@ -1,0 +1,152 @@
+body {
+  font-family: "微软雅黑";
+  /*color: "|"灰  #c8c8c8; 边框 #ededed; 字体灰 #8c8c8c; 枣红色 #ca151e; 字体浅灰 #bbbbbb*/
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+html,
+div,
+p,
+span,
+form,
+legend,
+fieldset,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+nr {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+button,
+img,
+a,
+input,
+textarea,
+th,
+td,
+table,
+lable {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #666666;
+}
+ul,
+li,
+ol,
+dl,
+dd,
+dt {
+  list-style: none;
+}
+img {
+  border: none;
+}
+/*.clear{height:0;overflow:hidden;font-size:0;clear:both}*/
+span,
+font {
+  display: inline-block;
+}
+a {
+  display: inline-block;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+.content {
+  width: 1084px;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.content .list {
+  width: 1084px;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.content .list .list_1 {
+  width: 1018px;
+  height: 54px;
+  border-bottom: 1px #d7d7d7 solid;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+.content .list .list_1 ul li:nth-child(1) span {
+  padding-right: 12px;
+  line-height: 38px;
+  float: left;
+  margin-top: 16px;
+  cursor: pointer;
+}
+.content .list .list_1 ul li:nth-child(1) span:first-child {
+  color: #c30d23;
+}
+.content .list .list_1 ul li:nth-child(2) span {
+  padding-right: 30px;
+  line-height: 38px;
+  float: right;
+  margin-top: 16px;
+  cursor: pointer;
+}
+.content .list .list_2 {
+  width: 1084px;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+  font-size: 14px;
+}
+.content .list .list_2 .nav_4_1 {
+  width: 232px;
+  height: 325px;
+  float: left;
+  margin-left: 32px;
+}
+.content .list .list_2 .nav_4_1 .nav_4_1_img {
+  width: 230px;
+  height: 230px;
+  position: relative;
+  border: 1px #797979 solid;
+}
+.content .list .list_2 .nav_4_1 .nav_4_1_img img {
+  height: 183px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+.content .list .list_2 .nav_4_1 span {
+  width: 100%;
+  text-align: center;
+  padding-top: 12px;
+  cursor: pointer;
+}
+.content .list .list_2 .nav_4_1 font {
+  width: 100%;
+  color: #d92f00;
+  line-height: 24px;
+  text-align: center;
+}
+/*# sourceMappingURL=list.css.map */

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="lib/css/reset.css" />
+		<link rel="stylesheet" href="css/grzxy.css" />
+		<script src="lib/js/jquery.js"></script>
+		<script type="text/javascript">
+			/*判断浏览器版本是否过低*/
+			$(document).ready(function() {
+				var b_name = navigator.appName;
+				var b_version = navigator.appVersion;
+				var version = b_version.split(";");
+				var trim_version = version[1].replace(/[ ]/g, "");
+				if(b_name == "Microsoft Internet Explorer") {
+					/*如果是IE6或者IE7*/
+					if(trim_version == "MSIE7.0" || trim_version == "MSIE6.0" || trim_version == "MSIE8.0") {
+						var html = '<p style="width: 100%; height: 700px; font-size: 50px; line-height: 700px; text-align: center;">您的浏览器版本过低，请升级或者更换浏览器</p>';
+						$('body').html(html);
+						//然后跳到需要连接的下载网站  
+						//window.location.href="http://jiaoxueyun.com/download.jsp";  
+					}
+				}
+			});
+		</script>
+	</head>
+
+	<body>
+		<!--头部-->
+		<div class="header">
+			<div class="header_0">
+				<div class="header_1 clearfix">
+					<div class="header_1_1">
+						<span>新生活 麦买购</span>
+					</div>
+					<div class="header_1_2">
+						<a href="#">个人中心</a>
+						<a href="#">登陆</a>
+						<a href="#">注册</a>
+					</div>
+				</div>
+			</div>
+			<div class="header_2 clearfix">
+				<div class="header_2_1">
+					<img class="img1" src="images/logo.png" />
+				</div>
+				<div class="header_2_2">
+					<div class="header_2_2_input clearfix">
+						<input type="text" />
+						<span>搜索</span>
+					</div>
+				</div>
+				<div class="header_2_2_cart">
+					<a href="">
+						<img src="images/购物车.png" alt="" />
+						<span>我的购物车</span>
+						<font>2</font>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="header_30">
+			<div class="header_3">
+				<a class="a1" href="#">首页</a>
+				<a id="show" href="#">母婴</a>
+				<a href="#">美容护肤</a>
+				<a href="#">女装</a>
+				<a href="#">食品</a>
+				<a href="#">家具</a>
+				<a href="#">汽车</a>
+				<a href="#">数码家电</a>
+				<a href="#" class="header_3_a">
+					<span>更多</span>
+					<img src="images/ARROW---UP.png" alt="" />
+				</a>
+			</div>
+		</div>
+		<!--个人中心-->
+		<div class="connet">
+			<div class="w clearfix connet_w">
+				<div class="connet_l fl">
+					<div class="con_a">
+						<img src="images/logo.png" alt="" />
+					</div>
+					<div class="con_b">
+						<div class="con_b_1 clearfix">
+							<span>wllinfo</span>
+							<img src="images/vip-1.png" alt="" />
+						</div>
+						<div class="con_b_2 clearfix">
+							<a href="#">
+								<span>实名认证</span>
+								<img src="images/shiming.png" alt="" />
+							</a>
+						</div>
+						<div class="con_b_3 clearfix">
+							<a href="#">
+								<span>修改密码</span>
+								<img src="images/PEN-2.png" alt="" />
+							</a>
+						</div>
+					</div>
+					<div class="con_d">
+						<p>2017/04/03-2018/04/03</p>
+					</div>
+					<div class="con_e"></div>
+					<ul id="ul">
+						<li class="active">我的订单</li>
+						<li>我的资产</li>
+						<li>我的团队</li>
+						<li>我的二维码</li>
+						<li>我的收藏</li>
+						<li>地址管理</li>
+						<li>银行卡管理</li>
+					</ul>
+					<div class="con_f tl" id="con_div">
+						<p>原密码：<input type="text" /></p>
+						<p>新密码：<input type="text" /></p>
+						<p>确认密码：<input type="text" /></p>
+						<button id="btn1">确认修改</button>
+						<button id="btn2">取消</button>
+					</div>
+				</div>
+				<div class="connet_r fr">
+					<ul class="clearfix connet_r_ul" id="ulc">
+						<li class="li1">
+							<span>全部订单<span>
+							<div class="div_xian"></div>
+						</li>
+						<li>
+							<span>待付款</span>
+							<div class="div_xian"></div>
+						</li>
+						<li>
+							<span>待发货</span>
+							<div class="div_xian"></div>
+						</li>
+						<li>
+							<span>已发货</span>
+							<div class="div_xian"></div>
+						</li>
+						<li>
+							<span>待评价</span>
+						</li>
+					</ul>
+					<div class="connet_r_a clearfix">
+						<div class="fl contdiv clearfix">
+							<p>订单类型：</p>
+							<div class="contdiv_a">
+								<div class="conbtn">
+									<p class="inp1">请选择</p>
+									<img src="images/DOWN.png" />
+								</div>
+								<ul class="contulli">
+									<li>套餐订单</li>
+									<li>积分订单</li>
+									<li>商品订单</li>
+								</ul>
+							</div>
+						</div>
+						<div class="fl contdiv clearfix">
+							<p>订单类型：</p>
+							<div class="contdiv_a">
+								<div class="conbtn">
+									<p class="inp1">请选择</p>
+									<img src="images/DOWN.png" />
+								</div>
+								<ul class="contulli">
+									<li>待付款</li>
+									<li>已付款</li>
+									<li>待发货</li>
+									<li>已发货</li>
+									<li>交易成功</li>
+									<li>待评价</li>
+									<li>交易关闭</li>
+								</ul>
+							</div>
+						</div>
+						<div class="fl continp clearfix">
+							<div class="fl">
+								<img src="images/Search-Icon.png" alt="" />
+								<input type="text" value="输入订单号或商品名称" class="inp1" id="txtinp" />
+							</div>
+							<div class="fl continp_btn" id="divbtn">搜索</div>
+						</div>
+					</div>
+					<div class="connet_r_b_bb_div">
+						<table class="connet_r_b">
+							<tr>
+								<th class="connet_r_b_th1">商品</th>
+								<th class="connet_r_b_th2">数量</th>
+								<th class="connet_r_b_th3">金额/麦豆</th>
+								<th class="connet_r_b_th4">支付方式</th>
+								<th class="connet_r_b_th5">下单时间</th>
+								<th class="connet_r_b_th5">订单状态</th>
+								<th class="connet_r_b_th6">查看</th>
+							</tr>
+							<tr>
+								<td class="contd clearfix">
+									<div class="fl contd_1">
+										<img src="images/商品图.png" />
+									</div>
+									<div class="contd_div">
+										<p class="contd_div_p1">梦娜斯红酒 梦娜斯红酒 梦娜斯红酒 梦娜斯红酒 梦娜斯红酒 </p>
+										<p class="contd_div_p2">净含量：750ml</p>
+									</div>
+								</td>
+								<td>1</td>
+								<td>560</td>
+								<td>麦豆</td>
+								<td>
+									<p>2017.4.9</p>
+									<p>17:30</p>
+								</td>
+								<td class="contd_p">
+									<p class="p1">确认收货</p>
+									<p>查看物流</p>
+								</td>
+								<td>
+									<a href="javascript:;">详情</a>
+								</td>
+							</tr>
+							<tr>
+								<td class="contd clearfix">
+									<div class="fl contd_1">
+										<img src="images/商品图.png" />
+									</div>
+									<div class="contd_div">
+										<p class="contd_div_p1">梦娜斯红酒 梦娜斯红酒 梦娜斯红酒 梦娜斯红酒 梦娜斯红酒 </p>
+										<p class="contd_div_p2">净含量：750ml</p>
+									</div>
+								</td>
+								<td>1</td>
+								<td>560</td>
+								<td>麦豆</td>
+								<td>
+									<p>2017.4.9</p>
+									<p>17:30</p>
+								</td>
+								<td class="contd_p">
+									<p class="p1">确认收货</p>
+									<p>查看物流</p>
+								</td>
+								<td>
+									<a href="javascript:;">详情</a>
+								</td>
+							</tr>
+							<!--<tr>
+							<td class="contd clearfix">
+								<div class="fl contd_1">
+									<img src="images/商品图.png" />
+								</div>
+								<div class="contd_div">
+									<p class="contd_div_p1">梦娜斯红酒 梦娜斯红酒 梦娜斯红酒 梦娜斯红酒 梦娜斯红酒 </p>
+									<p class="contd_div_p2">净含量：750ml</p>
+								</div>
+							</td>
+							<td>1</td>
+							<td>560</td>
+							<td>麦豆</td>
+							<td>
+								<p>2017.4.9</p>
+								<p>17:30</p>
+							</td>
+							<td class="contd_p">
+								<p class="p1">确认收货</p>
+								<p>查看物流</p>
+							</td>
+							<td>
+								<a href="javascript:;">详情</a>
+							</td>
+						</tr>-->
+						</table>
+					</div>
+					<!--分页-->
+					<div class="grxx_paging fr">
+						<label>
+							当前第<span>xxx</span>页;
+							共<span>xxx</span>页;
+							总共<span>xxx</span>条
+						</label>
+						<!-- 加上disable类样式，表示按钮禁用状态 -->
+						<input class="ptxt" type="text">
+						<button class="tiaoz">跳转</button>
+						<button class="prev disable">上一页</button>
+						<button class="next">下一页</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--猜你喜欢-->
+		<div class="nav_cxh w">
+			<div class="nav_4 clearfix">
+				<div class="nav_2_1 clearfix">
+					<span>热卖商品</span>
+					<font>想你所想</font>
+					<a href="#">查看更多>></a>
+				</div>
+				<div class="nav_4_1">
+					<a href="#">
+						<img src="images/商品图.png" alt="" />
+						<span>某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅</span>
+						<font>1200麦</font>
+					</a>
+				</div>
+				<div class="nav_4_1">
+					<a href="#">
+						<img src="images/商品图.png" alt="" />
+						<span>某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅</span>
+						<font>1200麦</font>
+					</a>
+				</div>
+				<div class="nav_4_1">
+					<a href="#">
+						<img src="images/商品图.png" alt="" />
+						<span>某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅</span>
+						<font>1200麦</font>
+					</a>
+				</div>
+				<div class="nav_4_1 nav_4_12">
+					<a href="#">
+						<img src="images/商品图.png" alt="" />
+						<span>某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅某某牌安全座椅</span>
+						<font>1200麦</font>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+		<div class="nav_7">
+			<ul class="clearfix">
+				<li class="nav_7_1">
+					<span>客服电话</span>
+					<h3>4008-868-097</h3>
+					<font>9:00-22:00</font>
+					<a href="#">用户反馈</a>
+				</li>
+				<li class="nav_7_2">
+					<h3>麦买购</h3>
+					<font>原创生活类电商品牌，秉承网易一贯的严谨态度，我们深入世界各地，从源头全程严格把控商品生产环节，力求帮消费者甄选到优质的商品</font>
+				</li>
+				<li class="nav_7_3">
+					<span>关注我们</span>
+					<a href=""><img src="images/二维码.png" alt="" /></a>
+					<font>微信公众号</font>
+				</li>
+			</ul>
+		</div>
+		<div class="footer">
+			<div class="footer_a">
+				<div class="footer_1 w">
+					<ul>
+						<li>
+							<img src="images/矢量智能对象.png" alt="" />
+							<span>30天无忧退货</span>
+						</li>
+						<li>
+							<img src="images/矢量智能对象1-拷贝.png" alt="" />
+							<span>满88元免邮费</span>
+						</li>
+						<li class="footer_1_li">
+							<img src="images/矢量智能对象.png" alt="" />
+							<span>30天无忧退货</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer_2">
+				<p class="footer_2_p1">
+					<a href="">关于我们</a>|
+					<a href="">商务合作</a>|
+					<a href="">企业采购</a>
+				</p>
+				<p class="footer_2_p2">
+					<font>网易公司版权所有 © 1997-2017 食品经营许可证：JY13301080111719</font>
+				</p>
+				<div>
+					<img src="images/u393.png" alt="" />
+				</div>
+			</div>
+		</div>
+		<!--APP下载-->
+		<!--<div class="app">
+			<div class="app1">
+				<img src="images/订单详情页/u2100.png" alt="">
+				<span>下载APP</span>
+			</div>
+			<div class="app2">
+				<img src="images/订单详情页/u2106.jpg" alt="">
+			</div>
+		</div>-->
+		<script src="js/grzx.js"></script>
+	</body>
+
+</html>
