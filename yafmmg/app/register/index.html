@@ -1,0 +1,272 @@
+<!doctype html>
+<html style="font-size: 60px;">
+<head>
+    <meta charset="utf-8">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>注册</title>
+    <!-- Bootstrap -->
+    <link href="Css/animate.css" rel="stylesheet">
+    <link href="Css/bootstrap.min.css" rel="stylesheet">
+    <link href="Css/base.css" rel="stylesheet" type="text/css">
+    <link href="Css/login.css" rel="stylesheet" type="text/css">
+    <link href="Css/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="Css/demo.css">
+    <link rel="stylesheet" href="Css/validate.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <script src="js/zepto.js"></script>
+    <!--<script src="js/zepto.all.js"></script>-->
+    <script src="js/touch.js"></script>
+    <script type="text/javascript" src="js/zepto-mvalidate.js"></script>
+    <script src="js/register.js"></script>
+
+    <!--[if lt IE 9]>
+    <!--<script src="Scripts/html5shiv.min.js"></script>-->
+    <!--<script src="Scripts/respond.min.js"></script>-->
+    <!--[endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--<script src="Scripts/jquery.min.js"></script>-->
+    <!--<script src="Scripts/bootstrap.min.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="Scripts/dialog-plus-min.js"></script>-->
+    <!--<script src="Scripts/common.js"></script>-->
+</head>
+<body>
+    <div id="Dform">
+        <!--<div class="top-bar">-->
+            <!--<a href="/index.html" class="back"></a><span class="title">用户注册</span>-->
+        <!--</div>-->
+        
+        <!--<script type="text/javascript" src="Scripts/validform_v5.3.2_min.js"></script>-->
+        <!--<script type="text/javascript" charset="utf-8" src="Scripts/register_validate.js"></script>-->
+        <form id="form1">
+        <div class="common-wrapper">
+            <div class="main">
+                <div class="logo">
+                    <img src="img/logo2.png"></div>
+                <div class="item item-tips" style="display: none;">
+                    <div class="err-msg">
+                    </div>
+                </div>
+                <div class="item item-username">
+                    <input data-validate="phone" data-describedby="phone-description" name="phone"  id="telphone"  data-descriptions="telphone" class="txt-input txt-tel" type="text"
+                        autocomplete="off" placeholder="手机号码">
+                </div>
+                
+                <!--<div class="item item-captcha" style="display: ">-->
+                    <!--<div class="input-info">-->
+                        <!--<input id="txtCode2" name="txtCode2" class="txt-input txt-captcha" type="text" autocomplete="off"-->
+                            <!--placeholder="请输入图片验证码">-->
+                        <!--<span id="captcha-img">-->
+                            <!--<img src="Picture/verify_code.ashx" width="63" height="25" alt="" onclick="this.src=this.src+'?'+Math.random();"></span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="item item-phone" id="btn-33">
+                    <input class="txt-input txt-phone" placeholder="请输入短信验证码" name="check_code" id="phoneyzm" data-required="true" data-descriptions="phoneyzm" data-conditional="phoneyzm" type="text">
+                    <!--<div style="width: 44.13793103448276%;height: 42px; display: inline-block;" id="btn-33" >-->
+                        <button type="button" id="btn-3" data-validate="text" data-validate="verify" data-describedby="phone-verify"
+                            class="btn-retransmit btn-retransmit-disabled">获取短信验证码</button>
+                     <!--</div>-->
+                </div>
+
+                <div class="item item-password">
+                    <input type="password" id="pwd" class="txt-input txt-password"
+                           autocomplete="off" placeholder="请设置6-20位登录密码" data-validate="password" data-required="true" data-descriptions="passwords" name="password">
+                </div>
+                <div class="item item-password">
+                    <input type="password" id="confirmpwd" name="txtPassword1" data-required="true" data-descriptions="confirmpassword" data-conditional="confirmpwd" class="txt-input txt-password"
+                           autocomplete="off" placeholder="请再次输入密码">
+                </div>
+
+                <div class="item item-username">
+                    <input class="txt-input txt-password" type="text" value="" id="joinphone" data-validate="tuiphone" data-describedby="phone-description" readOnly="true" name="tuiphone" placeholder="请输入推荐人手机号(可不填)" />
+                </div>
+                
+                <div class="item item-sms-captcha">
+                    <div class="err-tips">
+                        注册即视为同意<a href="javascript:;" id="agreement">《麦买购用户注册协议》</a></div>
+                </div>
+                
+                <!--<div class="item item-btns">
+                <a href="javascript:;" class="btn-login btn-disabled">注册</a>
+            </div>//-->
+                <div class="item item-btns submit">
+                    <button id="btn" type="submit" class="btn-login">注册</button>
+                </div>
+                <!--<div class="item item-btns">-->
+                    <!--<a href="/login.html" class="btn-login2">直接登录</a>-->
+                <!--</div>-->
+            </div>
+        </div>
+        </form>
+        
+    </div>
+
+    <!--注册遮罩层-->
+    <div id="zeZhao" style="position: absolute;top: 0;right: 0;bottom: 0;left: 0;background-color: rgba(0,0,0,0.2);display: none;">
+        <!--<div class="pd101">-->
+            <div class="common-wrapper1">
+                <div class="main1">
+                    <div class="item2 item-btns1">
+                        <a class="btn-login3">请输入图片验证码</a>
+                    </div>
+                    <div class="item3 item-btns1" style="display: none;" id="errorWarning">
+                        <a class="btn-login2">输入的图片验证码有误</a>
+                    </div>
+                    <div class="item1 item-phone1">
+                        <input id="vcode" name="txtCode" class="txt-input1 txt-phone1" type="tel" placeholder="请输入图片验证码">
+                        <div class="btn-retransmit1 btn-retransmit-disabled1">
+                            <div class="D_Img">
+                                <!--<span id="code1"></span>-->
+                                <img id="code1" src="" alt="">
+                            </div>
+                            <div class="img" id="code" title="看不清，换一张"><img src="img/break.png" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="item4 item-btns1">
+                        <input id="verify" name="btnSubmit" type="button" value="确定" class="btn-login1" />
+                    </div>
+                    <div class="item1 item-btns1">
+                        <a id="cancel" class="btn-login5">取消</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="mask"></div>
+    <div class="agreement">
+        <div class="close">
+            x</div>
+        <div class="content">
+            <p>
+                <h3 style="text-align: center;">
+                    麦买购用户注册协议</h3>
+            </p>
+            <p>
+                加入和使用麦买购网站表明您已经阅读并同意本协议条款，您的会员活动应遵从本协议条款约定。本协议由您与浙江麦太科技有限公司双方签署缔结，本协议具有法律效力。本协议中协议双方合称协议方，浙江麦太科技有限公司在协议中称为“麦买购”,域名为
+                www.51maimaigo.com</p>
+            <h4>
+                一、协议内容及签署</h4>
+            1、本协议内容包括协议正文及所有麦买购已经发布的或将来可能发布的各类规则。所有规则为本协议不可分割的组成部分，与协议正文具有同等法律效力。除另行明确声明外，任何麦买购及其关联公司提供的服务均受本协议约束。<br>
+            2、您应当在使用麦买购服务之前认真阅读全部协议内容，如您对协议有任何疑问的，应向麦买购咨询。但无论您事实上是否在使用麦买购服务之前认真阅读了本协议内容，只要您享受麦买购提供的服务，则本协议即对您产生约束，届时您不应以未阅本协议的内容或者未获得麦买购对您问询的解答等理由，主张本协议无效，或要求撤销本协议。<br>
+            3、您承诺接受并遵守本协议的约定。如果您不同意本协议的约定，您应立即停止注册程序或停止使用麦买购服务。<br>
+            4、麦买购有权根据需要不时地制订、修改本协议及/或各类规则，并以网站公示的方式进行公告，不再单独通知您。变更后的协议和规则一经在网站公布后，立即自动生效。如您不同意相关变更，应当立即停止使用麦买购服务并主张申请撤销麦买购会员帐号对应的权利。您继续使用麦买购服务的，即表示您接受经修订的协议和规则。<br>
+            <br>
+            <h4>
+                二、会员</h4>
+            <p>
+                1.申请资格</p>
+            <p>
+                本协议中所指的会员是指拥有中华人民共和国公民资格，具有完全的民事行为能力，并能够独立承担法律责任的自然人。不符合上述条件的，麦买购有权拒绝为其提供服务并终止会员资格。</p>
+            <p>
+                2.会员注册</p>
+            <p>
+                在您按照注册页面提示填写信息、阅读且同意本协议，并完成全部注册程序后或者以其他麦买购允许的方式享受麦买购提供的服务，您即成为麦买购的会员。</p>
+            <p>
+                在注册时，您应当按照法律法规要求，和注册页面的提示语要求，将注册信息填写完整清楚。保证填写信息的真实性、有效性。会员以用户名或电子邮箱和密码登陆麦买购后在本网站的一切行为均视为会员的真实意思表示并由会员承担相应的法律后果。会员应妥善保管会员账户密码及其他相关信息，因保管不善导致经济损失的，由会员承担责任。
+                除非有法律规定或司法裁定，且征得麦买购的同意，否则，账户（会员名）和密码不得以任何方式转让、赠与或继承（与账户相关的财产权益除外）。如果发现任何人不当使用您的账户或有任何其他可能危及您的账户安全的情形时，您应当立即以有效方式通知麦买购，要求麦买购暂停相关服务。</p>
+            <p>
+                3.会员权利</p>
+            <p>
+                3.1用户注册成为麦买购的会员后，即刻可以享受麦买购提供的服务；</p>
+            <p>
+                3.2您在麦买购的交易过程中与其他会员发生交易纠纷时，一旦您或其它会员任一方或双方共同提交麦买购要求调处，则麦买购有权根据单方判断做出调处决定，您了解并同意接受麦买购的判断和调处决定。该决定将对您具有法律约束力；</p>
+            <p>
+                3.3您了解并同意，麦买购有权应政府部门（包括司法及行政部门）的要求，向其提供您在麦买购填写的注册信息和交易记录等必要信息。如您涉嫌侵犯他人知识产权，则麦买购亦有权在初步判断涉嫌侵权行为存在的情况下，向权利人提供您必要的身份信息。</p>
+            <p>
+                4.会员的义务</p>
+            <p>
+                4.1会员必须保证注册信息的准确性；</p>
+            <p>
+                4.2如果会员填写的资料有变更，应及时通知麦买购做出相应的修改；</p>
+            <p>
+                4.3会员不得出现恶意注册恶意点击等行为；麦买购严禁通过购买产品恶意取消订单等非法手段来提高个人收入，一经发现，麦买购有权取消会员的资格，并追回已经支付的全部佣金，同时该会员必须赔偿由此给麦买购带来的所有损失。</p>
+            <p>
+                4.4 会员不得盗用或购买他人身份信息进行注册，否则麦买购有权取消其会员资格，追索已经支付的全部佣金，并保留追述其法律责任的权利。</p>
+            <p>
+                4.5会员在使用麦买购服务过程中实施的所有行为均遵守国家法律、法规等规范性文件及麦买购各项规则的规定和要求，不违背社会公共利益或公共道德，不损害他人的合法权益，不违反本协议及相关规则。您如果违反前述承诺，产生任何法律后果的，您应以自己的名义独立承担所有的法律责任，并确保麦买购免于因此产生任何损失。</p>
+            <p>
+                4.6麦买购严禁各种针对麦买购活动的作弊行为。对于查实的作弊行为，我们将收回该账号全部的邀请奖励、取消邀请资格，给予一定处罚，并列入麦买购黑名单账户。</p>
+            <p>
+                4.7不使用任何装置、软件或例行程序干预或试图干预麦买购平台的正常运作或正在麦买购上进行的任何交易、活动。您不得采取任何将导致不合理的庞大数据负载加诸麦买购网络设备的行动。</p>
+            <br>
+            <h4>
+                三、隐私权政策</h4>
+            <p>
+                1.麦买购对希望成为会员的用户没有任何限制，但16岁以下的用户使用麦买购服务必须取得监护人的同意；</p>
+            <p>
+                2.一个帐号仅限一个会员使用，会员必须向麦买购提供真实确实的信息，对于由于资料提供不正确导致货物及款项无法收到等后果，麦买购不承担责任；</p>
+            <p>
+                3.会员资料修改后必须及时通知麦买购做出相应变更；</p>
+            <p>
+                4.会员必须遵守麦买购的使用条款及隐私政策。</p>
+            <br>
+            <h4>
+                四、网站服务中断或故障</h4>
+            <p>
+                会员同意，基于互联网的特殊性，本网站不担保服务不会中断，也不担保服务的及时性。系统因相关状况无法正常运作，使会员无法使用任何本网站服务或使用任何本网站服务时受到任何影响时，麦买购对会员或第三方不负任何责任，前述状况包括但不限于：</p>
+            <p>
+                1.麦买购系统停机维护期间；</p>
+            <p>
+                2.电信设备出现故障不能进行数据传输的；</p>
+            <p>
+                3.由于黑客攻击、网络供应商技术调整或故障、网站升级、银行或第三方支付机构方面的问题等原因而造成的本网站服务中断或延迟；</p>
+            <p>
+                4.因台风、地震、海啸、洪水、停电、战争、恐怖袭击等不可抗力之因素，造成本网站系统障碍不能执行业务的。</p>
+            <br>
+            <h4>五、特别条款特别条款</h4>
+            <p>麦买购的宗旨为“消费、创业、创富”，公司积分以及返现的目的是为了吸引更多有消费需求和支付能力的潜在消费者成为麦买购会员，任何仅以获取积分及返现为目的的行为包括但不限于代垫资金、回购商品、购买积分、借用他人身份消费等，将被视为违反公司宗旨，公司有权不予以计算积分及返现。</p>
+            <h4>
+                六、 法律适用、条款有效性及管辖</h4>
+            <p>
+                1.因本协议发生纠纷的，适用中华人民共和国法律。</p>
+            <p>
+                2.若本协议的部分条款被认定为无效或者无法实施时，本协议中的其他条款仍然有效。</p>
+            <p>
+                3.因履行本协议产生纠纷的，协商解决。协商不成的，双方约定向杭州仲裁委员会申请仲裁裁决。</p>
+            <br>
+            <br>
+            <p>
+                浙江麦太科技有限公司</p>
+            <p>
+                2017年5月1日</p>
+        </div>
+    </div>
+    <script>
+
+        //当前页面的推荐人手机号
+        var searchURL = window.location.search;
+        searchURL = searchURL.substring(1, searchURL.length);
+        var tuiphone = searchURL.split("?")[0].split("=")[1];
+		if(tuiphone.split("&")){
+        	tuiphone = tuiphone.split("&")[0];
+        }
+        $('#joinphone').val(tuiphone);
+
+        //获取url后面的参数的方法
+//        var tuiphone = window.location.search.tuiphone;
+        //alert(text);
+//        $("#joinphone").val(text);
+//        alert($("#joinphone").val());
+
+
+        $(function () {
+            $("#agreement").click(function () {
+                $(".mask").show();
+                $(".agreement").show();
+            });
+            $(".close").click(function () {
+                $(".mask").hide();
+                $(".agreement").hide();
+            });
+        });
+    </script>
+</body>
+</html>

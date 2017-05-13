@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>	
+    <head>
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
+        <link href="/public/admin/css/css/style.css?a=1" rel='stylesheet' type='text/css' />
+<script src="/public/admin/js/jquery-1.9.1.min.js"></script>   
+    </head>
+    <body>
+        <script>$(document).ready(function (c) {
+                $('.close').on('click', function (c) {
+                    $('.login-form').fadeOut('slow', function (c) {
+                        $('.login-form').remove();
+                    });
+                });
+            });
+        </script>
+        <!--SIGN UP-->
+        <h1>klasikal Login Form</h1>
+        <div class="login-form">
+            <div class="close"> </div>
+            <div class="head-info">
+                <label class="lbl-1"> </label>
+                <label class="lbl-2"> </label>
+                <label class="lbl-3"> </label>
+            </div>
+            <div class="clear"> </div>
+            <div class="avtar">
+                <img src="/public/admin/images/avtar.png" />
+            </div>
+            <form action="login" method="post" onsubmit="return false;" >
+                <input type="text" class="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {
+                            this.value = 'Username';
+                        }" id="username">
+                <div class="key">
+                    <input type="password" value="" id="password">
+                </div>
+                  <div class="signin">
+                <input type="submit" value="Login"  onclick="submitLogin()">
+            </div>
+            </form>
+          
+        </div>
+        <div class="copy-rights">
+            <p>Copyright &copy;</p>
+        </div>
+
+    </body>
+</html>
+<script>
+    function submitLogin(){
+        var url="<?php U('login');?>";
+        $.ajax({
+            type:'post',
+            data:"t="+new Date()+"&username="+$("#username").val()+"&pass="+$("#password").val(),
+            url:url,
+            success:function(data){
+                if(data=="1000"){
+                    history.go(0) ;
+                }else{
+                    alert('账号密码有误');
+                    
+                }
+            }
+        })
+    }
+</script>

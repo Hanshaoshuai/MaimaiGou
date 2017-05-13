@@ -1,0 +1,774 @@
+    <!DOCTYPE html>
+<html>
+	<head lang="en">
+	    <meta charset="UTF-8">
+	    <!-- uc强制竖屏 -->
+	    <meta name="screen-orientation" content="portrait">
+	    <!-- QQ强制竖屏 -->
+	    <meta name="x5-orientation" content="portrait">
+	    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+	    <title>麦买购</title>
+	    <link rel="stylesheet" type="text/css"  href="css/base.css"/>
+	    <link rel="stylesheet" type="text/css"  href="css/header.css"/>
+	    <link rel="stylesheet" href="css/menu.css"/>
+		<link rel="stylesheet prefetch" href="ogLaVp_data/bootstrap.css">
+	    <style type="text/css">
+	        * {
+	            -webkit-box-sizing: border-box;
+	            -moz-box-sizing: border-box;
+	            box-sizing: border-box;
+	        }
+	
+	        html {
+	        	font-size: 100px;
+	            -ms-touch-action: none;
+	        }
+	        body,ul,li {
+	            padding: 0;
+	            margin: 0;
+	            border: 0;
+	        }
+	        body {
+	        	width: 100%;
+	        	height:100%;
+	            font-size: 0.12rem;
+	            font-family: ubuntu, helvetica, arial;
+	            overflow: hidden; /* this is important to prevent the whole page to bounce */
+	        }
+	        #footer {
+	            position: absolute;
+	            z-index: 2;
+	            bottom: 0;
+	            left: 0;
+	            width: 100%;
+	            height: 0.48rem;
+	            /*background: #444;*/
+	            padding: 0;
+	            /*border-top: 1px solid #444;*/
+	        }
+	        #wrapper {
+	            position: absolute;
+	            z-index: 1;
+	            top: 0;
+	            bottom: 0.48rem;
+	            left: 0;
+	            width: 100%;
+	            background: #ccc;
+	            overflow: hidden;
+	        }
+	        #scroller {
+	            position: absolute;
+	            padding-bottom:0.5rem;
+	            z-index: 1;
+	            -webkit-tap-highlight-color: rgba(0,0,0,0);
+	            width:100%;
+	            -webkit-transform: translateZ(0);
+	            -moz-transform: translateZ(0);
+	            -ms-transform: translateZ(0);
+	            -o-transform: translateZ(0);
+	            transform: translateZ(0);
+	            -webkit-touch-callout: none;
+	            -webkit-user-select: none;
+	            -moz-user-select: none;
+	            -ms-user-select: none;
+	            user-select: none;
+	            -webkit-text-size-adjust: none;
+	            -moz-text-size-adjust: none;
+	            -ms-text-size-adjust: none;
+	            -o-text-size-adjust: none;
+	            text-size-adjust: none;
+	            background: #fff;
+	        }
+			.box{
+				display:block;
+				position: absolute; right: 6.2rem; bottom: 1.8rem;
+				width: 0.15rem; height: 0.15rem; background: #c11920;
+				border-radius: 52%;
+				color:#fff;line-height: 0.15rem;text-align: center;
+				display:none;
+			}
+			
+			/*购物车动画*/
+			.m-sidebar {
+					position: fixed;
+					bottom: 0.31rem;
+					left: 0.478rem;
+					background: #000;
+					z-index: -2000;
+					width: 0.16rem;
+					height: 0.16rem;
+					font-size: 0.10rem;
+					color: #fff;
+				}
+				.m-sidebar .cart {
+					color: #fff;
+					text-align: center;
+					line-height: 20px;
+					padding: 0px 0 0 0px;
+					top:100px;
+					font-size: 0.10rem;
+				}
+				.m-sidebar .cart i{
+					font-size: 0.10rem;
+				}
+				.m-sidebar .cart span {
+					display: block;
+					width: 20px;
+					margin: 0 auto;
+					font-size: 0.10rem;
+				}
+				.u-flyer {
+					display: block;
+					width: 0.16rem;
+					height: 0.16rem;
+					border-radius: 0.16rem;
+					position: fixed;
+					z-index: 10;
+				}
+				#nm{
+					font-size: 0.10rem;
+				}
+				
+			/*loding动画图*/
+			.loadEffect{
+	            width: 1.00rem;
+	            height: 1.00rem;
+	            position: relative;
+	            margin: 0 auto;
+	            margin-top:1.50rem;
+	        }
+	        .loadEffect span{
+	            display: inline-block;
+	            width: 0.20rem;
+	            height: 0.20rem;
+	            border-radius: 50%;
+	            background: #fff;
+	            position: absolute;
+	            -webkit-animation: load 1.04s ease infinite;
+	        }
+	        @-webkit-keyframes load{
+	            0%{
+	                -webkit-transform: scale(1.2);
+	                opacity: 1;
+	            }
+	            100%{
+	                -webkit-transform: scale(.3);
+	                opacity: 0.5;
+	            }
+	        }
+	        .loadEffect span:nth-child(1){
+	            left: 0;
+	            top: 50%;
+	            margin-top:-0.10rem;
+	            -webkit-animation-delay:0.13s;
+	        }
+	        .loadEffect span:nth-child(2){
+	            left: 0.14rem;
+	            top: 0.14rem;
+	            -webkit-animation-delay:0.26s;
+	        }
+	        .loadEffect span:nth-child(3){
+	            left: 50%;
+	            top: 0;
+	            margin-left: -0.10px;
+	            -webkit-animation-delay:0.39s;
+	        }
+	        .loadEffect span:nth-child(4){
+	            top: 0.14rem;
+	            right:0.14rem;
+	            -webkit-animation-delay:0.52s;
+	        }
+	        .loadEffect span:nth-child(5){
+	            right: 0;
+	            top: 50%;
+	            margin-top:-0.10rem;
+	            -webkit-animation-delay:0.65s;
+	        }
+	        .loadEffect span:nth-child(6){
+	            right: 0.14rem;
+	            bottom:0.14rem;
+	            -webkit-animation-delay:0.78s;
+	        }
+	        .loadEffect span:nth-child(7){
+	            bottom: 0;
+	            left: 50%;
+	            margin-left: -0.10px;
+	            -webkit-animation-delay:0.91s;
+	        }
+	        .loadEffect span:nth-child(8){
+	            bottom: 0.14rem;
+	            left: 0.14rem;
+	            -webkit-animation-delay:1.04s;
+	        }
+	        #loadEffect{
+	            width: 3.00rem;
+	            height: 2.00rem;
+	            position: relative;
+	            margin: 0 auto;
+	            margin-top:1.50rem;
+	            background: #fff;
+	        }
+	        #loadEffect span{
+	            display: inline-block;
+	            text-align: center;
+	            line-height: 0.24rem;
+	            font-size: 0.16rem;
+	            width: 2.40rem;
+	            height: 0.5rem;
+	            top:0;bottom:0;
+	            left:0;right:0;
+	            margin:auto;
+	            position: absolute;
+	        }
+	    </style>
+	    <!--屏幕适配-->
+	    <script type="text/javascript">
+			(function (doc, win) {
+		        var docEl = doc.documentElement,
+		            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		            recalc = function () {
+		                var clientWidth = docEl.clientWidth;
+		                if (!clientWidth) return;
+		                if(clientWidth>=375){
+		                    docEl.style.fontSize = '100px';
+		                }else{
+		                    docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+		                }
+		            };
+		
+		        if (!doc.addEventListener) return;
+		        win.addEventListener(resizeEvt, recalc, false);
+		        doc.addEventListener('DOMContentLoaded', recalc, false);
+		    })(document, window);
+		    
+			/*购物车动画*/
+	//		window.console = window.console || function(t) {};
+	//		window.open = function(){ console.log('window.open is disabled.'); };
+	//		window.print = function(){ console.log('window.print is disabled.'); };
+			
+	//		if (false) {
+	//		  window.ontouchstart = function(){};
+	//		}
+		</script>
+	</head>
+	<body >
+	<!--头部导航栏-->
+	<div id="header" class="head">
+	    <div class="navigation">
+	        <p class="navigation-back" id="return"><img src="images/dp_btn_return@2x.png" alt="" /></p>
+	        <div class="navigationS">
+	            <!--<div class="left">-->
+	            <!--<a href=""><img src="images/dp_btn_cart-@2x.png" alt=""></a>-->
+	            <!--</div>-->
+	            <div class="right" id="dropDown-menu">
+	                <img src="images/dp_btn_more@2x.png" alt="">
+	            </div>
+	        </div>
+	        <div class="navigationS_1"><img src="images/dp_btn_cart-@2x.png" alt="" /></div>
+	        <!--头部下拉菜单-->
+	        <div class="menu" id="menu">
+	            <div class="menus">
+	                <div class="menuS">
+	                    <div class="menuSS">
+	                        <ul>
+	                            <li>
+	                                <div class="menuUnderline" id="information">
+	                                    <div class="menuContent">
+	                                        <div class="img"><img src="images/dp_nav_rightbar_message@2x.png" alt=""/></div>
+	                                        <div class="text"><span>消息</span></div>
+	                                    </div>
+	                                </div>
+	                            </li>
+	                            <li>
+	                                <div class="menuUnderline" id="homePage">
+	                                    <div class="menuContent">
+	                                        <div class="img"><img src="images/dp_nav_rightbar_home@2x.png" alt=""/></div>
+	                                        <div class="text"><span>首页</span></div>
+	                                    </div>
+	                                </div>
+	                            </li>
+	                            <li>
+	                                <div id="myMaiDou" class="menuUnderline" style="border: none">
+	                                    <div class="menuContent">
+	                                        <div class="img"><img src="images/dp_nav_rightbar_my@2x.png" alt=""/></div>
+	                                        <div class="text"><span>我的麦买购</span></div>
+	                                    </div>
+	                                </div>
+	                            </li>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	
+	<!--产品参数弹出层-->
+	<div class="menu_top"></div>
+	<div class="productMenus" style="height:5.1rem;">
+	    <div class="menu_content">  
+	        <div class="close_buttonS"><img src="images/dp_bottombar_close@2x.png" alt=""></div>
+	        <div class="menu_contentTop">
+	
+	            <div class="left_minImg">
+	                <img id="imgId" src="images/evaluateImg9@2x.png" alt=""/>
+	            </div>
+	
+	            <div class="moneyS">
+	                <ul>
+	                    <li class="money_now" id="money_now">￥3060</li>
+	                    <li class="Stock" id="Stock">库存2345件</li>
+	                    <li class="Specifications" id="Specifications">
+	                    	已选：
+	                    	<!--<font></font>
+	                    	<span></span>-->
+	                    </li>
+	                </ul>
+	            </div>
+	        </div>
+			<div class="qqqq">
+		        <div class="center1">
+		            <!--<div class="colorS"><p>颜色分类</p></div>-->
+		
+		            <!--<div class="colorS_s">-->
+		                <!--<ul class="ul_color" id="ul_scroll">-->
+		                    <!--<li class="li_btn"><p>黑色 墨</p></li>-->
+		                    <!--<li class="li_btn"><p>红色 墨</p></li>-->
+		                    <!--<li class="li_btn"><p>黑色 墨</p></li>-->
+		                    <!--<li class="li_btn"><p>黑色 墨</p></li>-->
+		                    <!--<li class="li_btn"><p>黄色 墨</p></li>-->
+		                <!--</ul>-->
+		            <!--</div>-->
+		
+		        </div>
+		
+		        <div class="Purchase_quantity">
+		            <div class="Purchase_quantityCenter">
+		                <div class="text"><p>购买数量</p></div>
+		                <div class="textNumber">
+		                    <div id="div">
+		                        <div class="li3"><img src="images/dp_bottombar_minus_bg3.png" alt=""/></div>
+		                        <div class="li2">
+		                            <!--<img src="images/dp_bottombar_quantity_bg.png" alt=""/>-->
+		                            <span class="subtract">1</span>
+		                        </div>
+		                        <div class="li1"><img src="images/dp_bottombar_minus_bg1.png" alt=""/></div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="Oil_card">
+		            <div class="Oil_card_text">
+		                <div class="Oil_card_text_1"><p>持卡人</p><input id="ka_txt" type="text" onkeyup="value=value.replace(/[\d]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[\d]/g,''))" maxlength=10 name="Numbers"></div>
+		                <div class="Oil_card_text_2"><p>油卡号</p><input id="oil_txt" type="text"></div>
+		            </div>
+		        </div>
+		    </div>
+	    </div>
+	    <div class="Oil_card1">
+	        <span class="finish1">完成</span>
+	    </div>
+	</div>
+	
+	
+	<!--产品服务弹出层-->
+	<div class="ProductService_menu"></div>
+	<div class="ProductService">
+	    <div class="menu_content">
+	        <div class="menu_contentTop">
+	            <div class="menu_topText">
+	                <p>产品服务</p>
+	            </div>
+	            <img src="images/dp_bottombar_close@2x.png" alt="" />
+	        </div>
+	
+	        <div class="center">
+	            <!--<ul id="ul">-->
+	                <!--<li id="li">
+		                <div class="li_text">
+			                <div class="li_img"><img src="images/ok.png" alt=""></div>
+			                <div class="li_txt"><p id="name">卖家承诺24小时发货</p></div>
+		                </div>
+		                <div class="small_text">
+			                <ul>
+				                <li><p id="content1">卖家承诺24小时发货卖家承诺24小时发货卖家承诺24小时发货卖家承诺24小时发货卖家承诺24小时发货卖家承诺24小时发货</p></li>
+				                <li><p id="content11">卖家承诺24小时发货卖家承诺24小时发货</p></li>
+			                </ul>
+		                </div>
+	                </li>
+	            </ul>
+	            <ul>
+		            <li>
+			            <div class="li_text">
+				            <div class="li_img"><img src="images/ok.png" alt=""></div>
+				            <div class="li_txt"><p id="name2">假一赔十</p></div>
+			            </div>
+			            <div class="small_text">
+				            <ul>
+					            <li><p id="content2">卖家承诺24小时发货卖家承诺24小时发货卖家承诺24小时发货卖家承诺24小时发货卖家承诺24小时发货卖家承诺24小时发货</p></li>
+					           	<li><p>卖家承诺24小时发货卖家承诺24小时发货</p></li>
+				            </ul>
+			            </div>
+		            <!--</li>-->
+	            <!--</ul>-->
+	        </div>
+	
+	        <div  class="Oil_card">
+	            <div class="Oil_card_text">
+	                <p class="finish">完成</p>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	
+	<div id="wrapper">
+	    <div id="scroller">
+	        <!--头部-->
+	        <header class="header">
+	            <!--头部banner图-->
+	            <div class="center_img swipe slide" id="slide3">
+	                <ul class="img swipe-wrap" id="pro_banner">
+	                    <!--<li><a href="#"><img id="bannerImg" src="images/dp_particulars_picture_1@2x.png" alt=""/></a></li>-->
+	                    <!--<li><a href="#"><img src="images/dp_particulars_picture_1@2x.png" alt=""/></a></li>-->
+	                    <!--<li><a href="#"><img src="images/dp_particulars_picture_1@2x.png" alt=""/></a></li>-->
+	                    <!--<li><a href="#"><img src="images/dp_particulars_picture_1@2x.png" alt=""/></a></li>-->
+	                </ul>
+	                <div class="dot">
+	                    <!--<span></span>-->
+	                    <!--<span></span>-->
+	                    <!--<span></span>-->
+	                    <!--<span></span>-->
+	                </div>
+	            </div>
+	            <!--商品描述-->
+	            <div class="shop_class">
+	                <div class="shop_class_S">
+	                    <div class="text">
+	                        <div class="text_top"><p id="description"></p></div>
+	                    </div>
+	                    <div class="money">
+	                        <div class="moneyS">
+	                            <div class="money_now"><p id="promotional_price"></p></div>
+	                            <div class="money_before"><p id="cost_price"></p></div>
+	                        </div>
+	                    </div>
+	                    <div class="options">
+	                        <div class="options_S">
+	                            <div class="options_Ss">
+	                                <ul>
+	                                	<li id="is_hot"><div class="divs"><div class="divS"><p>热卖</p></div></div></li>
+	                                    <li id="is_new"><div class="divs"><div class="divS"><p>新品</p></div></div></li>
+	                                    <li id="is_overseas"><div class="divs"><div class="divS"><p>海外</p></div></div></li>
+	                                    <li id="is_high"><div class="divs"><div class="divS"><p>精品</p></div></div></li>
+	                                    <li id="is_sales"><div class="divs"><div class="divS"><p>促销</p></div></div></li>
+	                                </ul>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="hint" id="brief_product_serve">
+	                        <!--<div class="hint_text">
+	                            <div>
+	                                <div class="text">
+	                                    <ul>
+	                                        <li>
+	                                            <div class="text_s">
+	                                                <span class="text_s_left"><img src="images/ok.png" alt=""/></span>
+	                                                <div class="text_s_right"><span>卖家承诺24小时发货</span></div>
+	                                            </div>
+	                                        </li>
+	                                        <li>
+	                                            <div class="text_s">
+	                                                <div class="text_s_left"><img src="images/ok.png" alt=""/></div>
+	                                                <div class="text_s_right"><span>假一赔十</span></div>
+	                                            </div>
+	                                        </li>
+	                                    </ul>
+	                                </div>
+	                                <div class="icon"><img src="images/RightArrow_2@2x.png" alt=""></div>
+	                            </div>
+	                        </div>-->
+	                    </div>
+	                    <div class="productParameter">
+	                        <div class="productParameterText">
+	                            <div>
+	                                <div class="text" id="productParameter"><p>产品参数</p></div>
+	                                <div class="icon"><img src="images/RightArrow_2@2x.png" alt=""></div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	                <div class="details">
+	                    <div class="details_ico"><img src="images/dp_particulars_title@2x.png" alt=""></div>
+	                </div>
+	            </div>
+	
+	        </header>
+	
+	        <!--主体部分-->
+	        <nav class="nav">
+	            <!--商品详情部分-->
+	            <div class="shop_ss">
+	                <ul>
+	                    <li>
+	                        <div class="shop_img" id="product_content">
+	                            <!--<img src="images/dp_productimage@2x.png" alt="">-->
+	                        </div>
+	                    </li>
+	                    <!--<li>-->
+	                    <!--<div class="shop_img">-->
+	                    <!--<img src="images/dp_particulars_picture_2@2x.png" alt="">-->
+	                    <!--</div>-->
+	                    <!--</li>-->
+	                    <!--<li>-->
+	                    <!--<div class="shop_img">-->
+	                    <!--<img src="images/dp_particulars_picture_3@2x.png" alt="">-->
+	                    <!--</div>-->
+	                    <!--</li>-->
+	                </ul>
+	            </div>
+	            <!--评价部分-->
+	            <div class="seckill_top">
+	                <div class="seckill_img"><img src="images/evaluate_title@2x.png" alt=""></div>
+	            </div>
+	
+	            <section class="product_box">
+	                <!--<div class="product_top">-->
+	                <!--<div class="product_userinfo">-->
+	                <!--<div class="product_userinfo_left">-->
+	                <!--<div class="userinfo_leftOne"><img id="usrlogo" src="images/evaluate_avatar@2x.png" alt=""></div>-->
+	                <!--<div class="userinfo_leftTwo"><p id="product_comment_phone">181****4789</p></div>-->
+	                <!--<div class="userinfo_leftThree">-->
+	                <!--<img src="images/dp_evaluate_vip@2x.png" alt="">-->
+	                <!--</div>-->
+	                <!--</div>-->
+	                <!--<div class="product_userinfo_right"><p id="product_comment_ctime">2017-3-31</p></div>-->
+	                <!--</div>-->
+	                <!--</div>-->
+	                <!--<div class="product_bottom">-->
+	                <!--<ul>-->
+	                <!--<li>-->
+	                <!--<div class="evaluateStar">-->
+	                <!--<ul class="evaluateStarS" id="appendLi">-->
+	                <!--&lt;!&ndash;<li><img src="images/evaluate_star_h@2x.png" alt=""></li>&ndash;&gt;-->
+	                <!--&lt;!&ndash;<li><img src="images/evaluate_star_h@2x.png" alt=""></li>&ndash;&gt;-->
+	                <!--&lt;!&ndash;<li><img src="images/evaluate_star_h@2x.png" alt=""></li>&ndash;&gt;-->
+	                <!--&lt;!&ndash;<li><img src="images/evaluate_star_h2@2x.png" alt=""></li>&ndash;&gt;-->
+	                <!--&lt;!&ndash;<li><img src="images/evaluate_star@2x.png" alt=""></li>&ndash;&gt;-->
+	                <!--</ul>-->
+	                <!--</div>-->
+	                <!--</li>-->
+	                <!--<li>-->
+	                <!--<div class="evaluateContent">-->
+	                <!--<div class="evaluateText">-->
+	                <!--<p id="product_comment_centent">我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	                <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	                <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	                <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	                <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	                <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	                <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	                <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	                <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	                <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	                <!--</p>-->
+	                <!--</div>-->
+	
+	                <!--<div class="evaluateImg">-->
+	                <!--<ul id="product_comment_img">-->
+	                <!--<li><img src="images/evaluateImg9@2x.png" alt=""></li>-->
+	                <!--<li><img src="images/evaluateImg9@2x.png" alt=""></li>-->
+	                <!--<li><img src="images/evaluateImg9@2x.png" alt=""></li>-->
+	                <!--</ul>-->
+	                <!--</div>-->
+	                <!--<div class="commodityParameters">-->
+	                <!--<div class="commodityParameters_text"><p id="product_name">浪莎纯棉被套单件秋冬纯棉被套1.8m床双人浪莎纯棉被套单件秋冬纯棉被套1.8m床双人</p></div>-->
+	                <!--<div class="commodityParameters_time">-->
+	                <!--<p id="product_update_time">购买日期：2017-3.31</p>-->
+	                <!--<div class="commodityParameters_imgText"><img src="images/dp_evaluate_like@2x.png" alt=""><p id="number">77</p></div>-->
+	                <!--</div>-->
+	                <!--</div>-->
+	                <!--</div>-->
+	                <!--</li>-->
+	                <!--</ul>-->
+	                <!--</div>-->
+	            </section>
+	
+	            <!--<section class="product_box">-->
+	            <!--<div class="product_top">-->
+	            <!--<div class="product_userinfo">-->
+	            <!--<div class="product_userinfo_left">-->
+	            <!--<div class="userinfo_leftOne"><img src="images/evaluate_avatar@2x.png" alt=""></div>-->
+	            <!--<div class="userinfo_leftTwo"><p>181****4789</p></div>-->
+	            <!--<div class="userinfo_leftThree">-->
+	            <!--<img src="images/dp_evaluate_vip@2x.png" alt="">-->
+	            <!--</div>-->
+	            <!--</div>-->
+	            <!--<div class="product_userinfo_right"><p>2017-3-31</p></div>-->
+	            <!--</div>-->
+	            <!--</div>-->
+	            <!--<div class="product_bottom">-->
+	            <!--<ul>-->
+	            <!--<li>-->
+	            <!--<div class="evaluateStar">-->
+	            <!--<ul class="evaluateStarS">-->
+	            <!--<li><img src="images/evaluate_star_h@2x.png" alt=""></li>-->
+	            <!--<li><img src="images/evaluate_star_h@2x.png" alt=""></li>-->
+	            <!--<li><img src="images/evaluate_star_h@2x.png" alt=""></li>-->
+	            <!--<li><img src="images/evaluate_star_h2@2x.png" alt=""></li>-->
+	            <!--<li><img src="images/evaluate_star@2x.png" alt=""></li>-->
+	            <!--</ul>-->
+	            <!--</div>-->
+	            <!--</li>-->
+	            <!--<li>-->
+	            <!--<div class="evaluateContent">-->
+	            <!--<div class="evaluateText">-->
+	            <!--<p>我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--</p>-->
+	            <!--</div>-->
+	
+	            <!--<div class="evaluateImg">-->
+	            <!--<ul>-->
+	            <!--<li><img src="images/evaluateImg9@2x.png" alt=""></li>-->
+	            <!--<li><img src="images/evaluateImg9@2x.png" alt=""></li>-->
+	            <!--<li><img src="images/evaluateImg9@2x.png" alt=""></li>-->
+	            <!--</ul>-->
+	            <!--</div>-->
+	            <!--<div class="commodityParameters">-->
+	            <!--<div class="commodityParameters_text"><p>浪莎纯棉被套单件秋冬纯棉被套1.8m床双人浪莎纯棉被套单件秋冬纯棉被套1.8m床双人</p></div>-->
+	            <!--<div class="commodityParameters_time">-->
+	            <!--<p>购买日期：2017-3.31</p>-->
+	            <!--<div class="commodityParameters_imgText"><img src="images/dp_evaluate_like@2x.png" alt=""><p>77</p></div>-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--我能想象当天下午她乘坐那趟开得又慢又久的火车回纽约时，是什么样子。她肯定坐在那里直直地盯着前面，或者-->
+	            <!--</div>-->
+	            <!--</div>-->
+	            <!--</div>-->
+	            <!--</li>-->
+	            <!--</ul>-->
+	            <!--</div>-->
+	            <!--</section>-->
+	        </nav>
+	    </div>
+	</div>
+	
+	<!--底部-->
+	<footer id="footer" class="footer">
+	    <ul class="footer_ul">
+	        <div class="footer_left">
+	            <li id="shoppingCart">
+	                <a style="text-decoration:none;">
+	                    <div class="num"><span id="nm">0</span></div>
+	                    <div class="imgs">
+	                        <div class="radius"><p>1</p></div>
+	                        <img src="images/dp_tab_btn_shoppingcart@2x.png" alt=""/>
+	                    </div>
+	                    <div class="txt"><div class="txts"><p>购物车</p></div></div>
+	                </a>
+	            </li>
+	            <li id="collect">
+	                <a style="text-decoration:none;">
+	                    <div class="imgs" id="collectImg"><img src="images/evaluate_star@2x.png" alt=""/></div>
+	                    <div class="txt"><div class="txts"><p>收藏</p></div></div>
+	                </a>
+	            </li>
+	        </div>
+	        <div class="footer_right">
+	        	<input type="hidden" data="" id="product_attr_data" />
+	            <li id="addShoppingCart"><a style="text-decoration:none;"><div class="join"><p>加入购物车</p></div></a></li>
+	            <!--<li id="nowBuy" style="background: #c11920;"><a><div class="join"><p>立即购买</p></div></a></li>-->
+	        </div>
+	    </ul>
+	    
+	    
+	    <span id="ball" class="box">
+				1
+		</span>
+	    
+	    
+	</footer>
+	<div class="loding" style="position: absolute;z-index: 999; top: 0;right: 0;bottom: 0;left: 0;background-color: rgba(0,0,0,0.2);display: block;">
+	    <div class="loadEffect">
+	        <span></span>
+	        <span></span>
+	        <span></span>
+	        <span></span>
+	        <span></span>
+	        <span></span>
+	        <span></span>
+	        <span></span>
+		</div>	
+	</div>
+	<div id="loding" style="position: absolute;z-index: 999; top: 0;right: 0;bottom: 0;left: 0;background-color: rgba(0,0,0,0.2);display: none;">
+	    <div id="loadEffect">
+	        <span>您好我们的提现日期为每星期的 周三早上: 12:00——21:00</span>
+		</div>	
+	</div>
+		<!--/*购物车动画*/-->
+		<div class="m-sidebar">
+			<div class="cart"> <i id="end"></i></div>
+		</div>
+		<!--<script src="ogLaVp_data/jquery.js"></script>
+		<script src="ogLaVp_data/jquery_002.js"></script>-->
+	    <!--<script src="js/lib/swipe.js"></script>-->
+	    <!--<script src="js/lib/jquery-3.0.0.min.js"></script>-->
+	    <script src="js/lib/zepto.min.js"></script>
+	    <script src="js/lib/touch.js"></script>
+	    <script src="js/lib/swipeSlide.min.js"></script>
+	    <script src="js/ajax.js"></script>
+	    <script src="js/index.js"id="script1"></script>
+	    <script  type="text/javascript">
+		 　　document.getElementById("script1").src="js/index.js?ver="+Math.random();
+		</script>
+	    <script src="js/imageEnlarge.js"></script>
+	    <script src="js/productMenu.js"></script>
+		<script type="text/javascript" src="js/lib/iscroll.js"></script>
+		
+		<!--/*购物车动画*/-->
+	    <!--<script type="text/javascript">
+	    	if (document.location.search.match(/type=embed/gi)) {
+			  window.parent.postMessage('resize', "*");
+			}
+	    	$('.join').on('click', addProduct);
+			function addProduct(event) {
+			var offset = $('#end').offset(), flyer = $('<span id="nm" style="font-size:0.11rem;" class="box u-flyer">1</span>');
+				flyer.fly({
+				    start: {
+				        left: event.pageX,
+				        top: event.pageY
+				    },
+				    end: {
+				        left: offset.left,
+				        top: offset.top,
+				        width: 15,
+				        height: 15
+				    }
+				});
+			}
+	    </script>-->
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+

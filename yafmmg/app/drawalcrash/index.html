@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<link rel="stylesheet" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="swiper/css/swiper-3.4.1.min.css"/>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		
+		<script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+		<script src="https://img.hcharts.cn/highcharts/highcharts-more.js"></script>
+		<script src="https://img.hcharts.cn/highcharts/modules/solid-gauge.js"></script>
+		
+		
+		<script type="text/javascript">
+			function box(){
+				var _width=document.documentElement.clientWidth||document.body.clientWidth;			
+				var swiper=_width/375*100;
+				document.documentElement.style.fontSize=swiper+"px";
+			}
+			window.onload=function(){
+				box();
+			}
+		</script>
+	</head>
+	<body>
+		<div class="tixian">
+			<div class="kong"></div>
+			<div class="header">
+				<font class="fanhui"><img src="img/QQ图片20170418094953.png" alt="" /></font>
+				<span>我要提现</span>
+			</div>
+			<div class="content">
+				<div class="content_1">
+					<div class="names" style="width: 270px; height: 190px;">
+					    <div id="container-speed" style="width: 270px; height: 190px; float: left;"></div>
+					    <div id="container-rpm" style="width: 270px; height: 190px; float: left;"></div>
+					</div>
+					<div class="yeji"><span class="yejizhishu"></span></div>
+				</div>
+				<ul>
+					<li>
+						<span>可提麦豆：</span>
+						<font class="maidou"></font>
+					</li>
+					<li>
+						<span>提现麦豆：</span>
+						<input id="shuru" type="text" placeholder="请输入需要提现的麦豆"/>
+					</li>
+					<li>
+						<span>提现金额：</span>
+						<font id="xianjin">提现麦豆*我的业绩指数*总业绩指数</font>
+					</li>
+					<li id="tanchu">
+						<span>选择提现银行：</span>
+						<span class="yinhang">请选择...</span>
+						<font><img src="img/QQ图片20170418095003.png" alt="" /></font>
+					</li>
+					<li>
+						<span>验证码：</span>
+						<input id="yanzheng" type="text" placeholder="请输入验证码"/>
+						<font class="huoqu zbtn zbtn-primary zbtn-full zbtn-lg" id="btn-3">获取验证码</font>
+					</li>
+					<li>
+						<p>
+							<span>提现T+3工作日到账，如遇节假日延后到账。会员只允许每周次提交提现申请，代理商允许每月15号提交体现申请，</span>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="footer">
+				<span>确定申请</span>
+			</div>
+		</div>
+		<ul class="show">
+			<li>
+				
+			</li>
+			<li>
+				<div>
+					<span>请选择银行</span>
+				</div>
+				<div class="addbank">
+					
+				</div>
+			</li>
+		</ul>
+		
+		<!--获取验证码-->
+		<div id="zeZhao" style="position: absolute;top: 0;right: 0;bottom: 0;left: 0;background-color: rgba(0,0,0,0.2);display: none;">
+	        <div class="demo-bgfff pd101">
+	            <div class="zform zform-radius" id="form">
+                    <div class="field-shade">
+                       	<p>请输入图片验证码</p>
+                    </div>
+                    <div class="field-shade_2" display: style="display:none;">
+                       	<p>输入有误，请重新输入</p>
+                    </div>
+                    <div class="zform-control">
+                        <div class="field-textss1">
+                            <input type="text" class="" placeholder="请输入验证码" id="vcode" value="请输入验证码" onfocus="this.value=''" onblur="if(this.value=='')this.value='请输入验证码'">
+                        </div>
+                        <div class="map">
+                        	<span id="code1"><img class="imgs" src="" alt="" /></span>
+                        </div>
+                        <div style="float: right;" id="code" title="看不清，换一张">
+                            <img src="img/break.png" alt="" style="width: 44px;height: 44px;"/>
+                        </div>
+                    </div>
+                    <input type="button" id="verify" value="确定" class="zbtn zbtn-primary1 zbtn-full zbtn-lg" >
+                    <input type="button" id="cancel" value="取消" class="zbtn zbtn-primary1 zbtn-full zbtn-lg">
+	            </div>
+	    	</div>
+	    </div>
+	</body>
+	<script>
+	$(function () {
+		var searchURL = window.location.search;
+		searchURL = searchURL.substring(1, searchURL.length);
+		var ids = searchURL.split("?")[0].split("=")[1];
+		var href=window.location.href+"/?id=123"
+		console.log(href)
+		
+		
+		var wodeyejizhishu=null;       //我的业绩值
+		var zongyejizhishu=3;          //总业绩值
+		var xianjin="";                //提现金额
+		var bank_name="";              //卡名
+		var card_no="";                //卡号
+		var yanzhengma="";             //验证码
+		var phone="";
+		var reflect_maidou="";         //麦豆
+		$(".content ul li input").click( function () {  //删除input框
+			$(this).css({"outline":"none"})
+		});
+		$("#form input").click( function () {           //删除input框
+			$(this).css({"outline":"none"})
+		});
+		function　Tixian(){                              //请求获取麦豆
+			var all_record_index=3;
+			var record_index="";
+			$.ajax({
+				type:"post",
+				url:"/index.php/Api/DrawalCrash/getMyDrawaltoCrash",
+				async:true,
+				//jsonp:"callbackparam",//跨域
+				data:{
+					uid:"70"
+				},
+				dataType:"json",
+				success:function(data){
+					$(".maidou").html(data.data[0].reflect_maidou);
+					$(".yejizhishu").html(data.data[0].record_index);
+					reflect_maidou=data.data[0].reflect_maidou;
+					record_index=data.data[0].record_index;
+					phone=data.data[0].phone;
+					console.log(phone)
+					wodeyejizhishu=Math.floor((record_index/0.0125)*2);
+				}
+			});
+	
+	
+	
+			
+			$("#tanchu").click(function(){         //选择银行卡弹出框
+	//			console.log($(".show")[0])
+				$(".show").css({
+					"display":"block"
+				});
+				$.ajax({
+					type:"post",
+					url:"/index.php/Api/DrawalCrash/selectBankCard",
+					async:true,
+					//jsonp:"callbackparam",         //跨域
+					data:{
+						userid:"70"
+					},
+					dataType:"json",
+					success:function(data){
+						console.log(data)
+//						console.log($(".addbank").children().length)
+						var html = ''
+						data.data.map(function(val){
+							html += '<span class="bankname">'+val.bank_name+'</span>'+
+									'<font class="banks">'+val.card_no+'<img src="img/QQ图片20170418095003.png" alt="" /></font>'
+						});
+						$(".addbank").html(html);                          //添加节点
+						$(".banks").click(function(){                      //弹出框消失并选择成功
+							var bands=this.innerText;
+							bank_name=$(this).prev(".bankname");      //实例卡名
+							card_no=bands;                                 //实例卡号
+							$(".yinhang").html(bank_name);
+							console.log(bank_name)
+						});
+					}
+				});
+			});
+			
+			$(".show").click(function(){                   //银行卡弹出框消失
+				this.style.display="none";
+			});
+			
+			
+			
+			$("#shuru").on("input", function(){	            //提现金额计算
+				console.log()
+				var reflect_maidou_1=this.value;
+				var all_record_index_1=parseInt(all_record_index);
+				var record_index_1=record_index;
+				xianjin=parseInt(reflect_maidou_1)*all_record_index_1*record_index_1
+				if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/)){
+					$("#xianjin").html("提现麦豆*我的业绩指数*总业绩指数");
+					this.value=""
+					alert('只能输入数字');
+				}else{
+					if(reflect_maidou_1*1<=reflect_maidou*1){
+//						console.log(reflect_maidou)
+						$("#xianjin").html(xianjin.toFixed(2));
+						if(reflect_maidou_1==""){
+							$("#xianjin").html("提现麦豆*我的业绩指数*总业绩指数");
+						}
+					}else{
+						alert('超出提现金额请重新输入');
+						$("#xianjin").html("提现麦豆*我的业绩指数*总业绩指数");
+						this.value="";
+					}
+				}
+			});
+			
+			
+			$(".fanhui").click(function(){             //头部返回
+				location.href = history.back(-1);
+//				window.location.href = 'native://retur';
+				console.log("maidou")
+			});
+			
+			
+			$(".huoqu").click(function(){              //获取验证码
+				console.log("maidou")
+				$("#vcode")[0].value="请输入验证码";      //value重新赋值
+				$("#code1").find(".imgs").attr(       //刷新验证图片           
+					"src","/index.php/api/Publices/getImageCode"
+				);
+				$("#zeZhao").css({                     //弹出框
+					"display":"block"
+				});
+			});
+			$("#cancel").click(function(){              //获取验证码
+				console.log("maidou")
+				$("#zeZhao").css({                     //取消消失弹框
+					"display":"none"
+				});
+				
+			});
+			$("#code").click(function(){              //换验证码
+				console.log("maidou")
+				$("#code1").find(".imgs").attr(                     
+					"src","/index.php/api/Publices/getImageCode"
+				);
+			});
+			$("#verify").click(function(){              //验证码确定按钮
+				var values=$("#vcode")[0].value;
+				if(values==""){
+					alert("请输入验证码")
+				}else{
+					$.ajax({                                //ajax后台交互
+						type:"post",
+						url:"/index.php/Api/User/sms",
+						async:true,
+						jsonp:"callbackparam",//跨域
+						data:{
+							uImgCode:values,         //用户输入的图片验证码
+							verifyCode:"2546",          //验证码
+							phone:phone            //手机号
+						},
+						dataType:"json",
+						success:function(data){
+							if(data.code==1009){
+								alert("验证码已发送至您手机")
+								$("#zeZhao").css({                     //取消消失弹框
+									"display":"none"
+								});
+							}
+							console.log(data.code)
+						}
+					});
+					console.log(phone)
+				
+				}
+			});
+			
+			
+			
+			$("#yanzheng").on("input", function(){     //获取验证码input value值
+				yanzhengma=this.value;
+				console.log(this.value)
+			});
+			
+			
+			$(".footer").click(function(){             //确定申请
+				if(xianjin!==""){
+					if(bank_name!==""&&card_no!==""){
+						if(yanzhengma!==""){
+							$.ajax({                                //ajax后台交互表单提交
+								type:"post",
+								url:"/index.php/Api/DrawalCrash/idrawl",
+								async:true,
+								jsonp:"callbackparam",              //跨域
+								data:{
+									uid:"70",                       //用户
+									umaidou:reflect_maidou          //麦豆
+								},
+								dataType:"json",
+								success:function(data){
+									if(data.code==1004){
+										alert("提现成功")
+										window.location.href = 'native://retur';    //成功后返回到某一页
+									
+									}else{
+										alert("提现失败！")
+									}
+									console.log(data.code)
+								}
+							});	
+						}else{
+							alert("请输入验证码")
+						}
+					}else{
+						alert("请选择银行卡")
+					}
+				}else{
+					alert("请输入提现麦豆")
+				}
+			});
+			
+			
+			
+			
+		}
+		new Tixian();
+		
+			
+		
+		
+		
+	    var gaugeOptions = {               //插件部分
+	        chart: {
+	            type: 'solidgauge'
+	        },
+	        title: null,
+	        pane: {
+	            center: ['50%', '85%'],
+	            size: '140%',
+	            startAngle: -90,
+	            endAngle: 90,
+	            background: {
+	                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+	                innerRadius: '60%',
+	                outerRadius: '100%',
+	                shape: 'arc'
+	            }
+	        },
+	        tooltip: {
+	            enabled: false
+	        },
+	        // the value axis
+	        yAxis: {
+	            stops: [
+	                [0.1, '#55BF3B'],      // green
+	                [0.5, '#DDDF0D'],      // yellow
+	                [0.9, '#DF5353']       // red
+	            ],
+	            lineWidth: 0,
+	            minorTickInterval: null,
+	            tickPixelInterval: 400,
+	            tickWidth: 0,
+	            title: {
+	                y: -70
+	            },
+	            labels: {
+	                y: 16
+	            }
+	        },
+	        plotOptions: {
+	            solidgauge: {
+	                dataLabels: {
+	                    y: 5,
+	                    borderWidth: 0,
+	                    useHTML: true
+	                }
+	            }
+	        }
+	    };
+	    // The speed gauge
+	    var time=0;                           //判断zongyeji是否赋值
+	    function dong(){
+	    	if(wodeyejizhishu!==null){
+	    		clearInterval(time);
+			    $('#container-speed').highcharts(Highcharts.merge(gaugeOptions, {
+			        yAxis: {
+			            min: 0,
+			            minorTickInterval: 'auto',
+			            minorTickWidth: 1,
+			            minorTickLength: 10,
+			            minorTickPosition: 'inside',
+			            minorTickColor: '#666',
+			            tickPixelInterval: 30,
+			            tickWidth: 2,
+			            tickPosition: 'inside',
+			            tickLength: 10,
+			            tickColor: '#666',
+			            labels: {
+			                step: 2,
+			                rotation: 'auto'
+			            },
+			            title: {
+			                text: 'km/h'
+			            },
+			            plotBands: [{
+			                from: 0,
+			                to: 120,
+			                   color: '#55BF3B' // green
+			            }, {
+			                from: 120,
+			                to: 160,
+			                   color: '#DDDF0D' // yellow
+			            }, {
+			                from: 160,
+			                to: 200,
+			                   color: '#DF5353' // red
+			            }],
+			            max: 200,
+			            title: {
+			                text: ''
+			            }
+			        },
+			        credits: {
+			            enabled: false
+			        },
+			        series: [{
+			            name: '速度',
+			            data: [wodeyejizhishu],
+			            dataLabels: {
+			                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+			                ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+			                '<span style="font-size:12px;color:silver">总业绩指数</span></div>'
+			            },
+			            tooltip: {
+			                valueSuffix: ' km/h'
+			            }
+			        }]
+			    }));
+		
+//		    setInterval(function () {
+		        // Speed
+		        var chart = $('#container-speed').highcharts(),
+		            point,
+		            newVal,
+		            inc;
+		        if (chart) {
+		            point = chart.series[0].points[0];
+		//          inc = Math.round((Math.random() - 0.5) * 100);
+		            newVal = point.y + inc;
+		            if (newVal < 0 || newVal > 200) {
+		                newVal = point.y - inc;
+		            }
+		            point.update(newVal);
+		        }
+		        
+		        $(".highcharts-data-label-color-0 span div span")[0].innerHTML=zongyejizhishu;
+		        
+		        $(".highcharts-data-labels .highcharts-label span").css({"color":"#fff"})//字的颜色
+//		    }, 2000);
+				$(".highcharts-data-labels .highcharts-label span").css({"color":"#fff"})//字的颜色
+				$("rect")[1].style.fill="none";
+				$("rect")[1].style.fill="none";//背景颜色
+				$("path")[0].style.stroke="blue"//边框颜色  需要时修改
+				$("tspan")[10].parentNode.style.color="#fff";
+				$("tspan")[10].parentNode.style.fill="#fff";//字的颜色
+				$("tspan")[0].parentNode.style.color="#fff";
+				$("tspan")[0].parentNode.style.fill="#fff";//字的颜色
+				$("tspan")[2].innerHTML="";
+				$("tspan")[4].innerHTML="";
+				$("tspan")[6].innerHTML="";
+				$("tspan")[8].innerHTML="";
+				$("tspan")[10].innerHTML="1.25";
+			    }
+	    	};
+	    	time = setInterval(dong, 200);
+		});
+	</script>
+</html>

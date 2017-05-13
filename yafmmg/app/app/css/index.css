@@ -1,0 +1,571 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+/*body,
+button,
+input,
+select,*/
+/*textarea {
+  font: 12px/1.5tahoma, arial, \5b8b\4f53;
+}*/
+/*h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}*/
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: couriernew, courier, monospace;
+}
+/*small {
+  font-size: 12px;
+}*/
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+sup {
+  vertical-align: text-top;
+}
+sub {
+  vertical-align: text-bottom;
+}
+legend {
+  color: #000;
+}
+fieldset,
+img {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+/*button,
+input,
+select,
+textarea {
+  font-size: 100%;
+}*/
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*# sourceMappingURL=reset.css.map */
+body {
+  background: #c11920;
+  font-size: 0.12rem;
+  width: 100%;
+  height: 100%;
+}
+html {
+  /*font-size: 100px;*/
+  width: 100%;
+  height: 100%;
+}
+span,
+font {
+  display: inline-block;
+}
+.show {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+}
+.show li:nth-child(1) {
+  width: 100%;
+  height: 2.67rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+.show li:nth-child(2) {
+  background: #fff;
+  width: 100%;
+  height: 4rem;
+}
+.show li:nth-child(2) div:nth-child(1) {
+  width: 100%;
+  height: .5rem;
+  border-bottom: 1px #eeeeee solid;
+  box-sizing: border-box;
+  line-height: .5rem;
+  text-align: center;
+  font-size: 0.16rem;
+  color: #3e3a39;
+  font-weight: bold;
+}
+.show li:nth-child(2) div:nth-child(2) {
+  width: 100%;
+  color: #000000;
+  font-size: 0.14rem;
+}
+.show li:nth-child(2) div:nth-child(2) span {
+  width: 50%;
+  float: left;
+  text-align: center;
+  line-height: 0.42rem;
+}
+.show li:nth-child(2) div:nth-child(2) font {
+  width: 50%;
+  float: left;
+  text-align: left;
+  line-height: 0.42rem;
+  position: relative;
+}
+.show li:nth-child(2) div:nth-child(2) font img {
+  width: 0.08rem;
+  height: 0.15rem;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0.15rem;
+  bottom: 0;
+}
+.tixian {
+  width: 100%;
+  height: 100%;
+}
+.tixian .kong {
+  width: 100%;
+  height: 0.2rem;
+  background: #c11920;
+}
+.tixian .header {
+  width: 100%;
+  height: 0.44rem;
+  background: #c11920;
+  position: relative;
+}
+.tixian .header span {
+  width: 50%;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  text-align: center;
+  font-size: 0.18rem;
+  color: #fff;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.tixian .header font {
+  width: 0.3rem;
+  height: 0.22rem;
+  position: absolute;
+  left: 0.2rem;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.tixian .header font img {
+  float: left;
+  width: 0.14rem;
+  height: 0.22rem;
+}
+.tixian .content {
+	width:100%;
+  background: #eeeeee;
+  height: auto;
+  padding-bottom:0.8rem;
+}
+.tixian .content .content_1 {
+  width: 100%;
+  height: 2rem;
+  background: #c11920;
+  margin-bottom: 0.1rem;
+  position: relative;
+}
+.tixian .content .content_1 .yeji {
+  height: 0.18rem;
+  width: 100%;
+  bottom: 0.26rem;
+  position: absolute;
+  line-height: 0.18rem;
+  float: left;
+  text-align: center;
+}
+.tixian .content .content_1 .yeji span {
+  color: #fff;
+  font-size: 0.18rem;
+}
+.tixian .content .content_1 .yeji span::before {
+  content: "我的业绩指数：";
+  color: #fff;
+  font-size: 0.18rem;
+}
+.tixian .content ul {
+  background: #fff;
+  width: 100%;
+}
+.tixian .content ul span {
+  font-size: 0.16rem;
+  padding: 0 1.2% 0 5%;
+  color: #3e3a39;
+}
+.tixian .content ul li {
+  border-bottom: 1px #c9c9c9 solid;
+  box-sizing: border-box;
+}
+.tixian .content ul li input::-webkit-input-placeholder { /* WebKit browsers */
+  color: #C9C9C9;
+}
+.tixian .content ul li input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #C9C9C9;
+}
+.tixian .content ul li input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #C9C9C9;
+}
+.tixian .content ul li input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #C9C9C9;
+}
+.tixian .content ul li:nth-child(1) {
+  width: 100%;
+  height: 0.44rem;
+}
+.tixian .content ul li:nth-child(1) span {
+  line-height: 0.44rem;
+  float:left;
+}
+.tixian .content ul li:nth-child(1) font {
+	line-height: 0.44rem;
+  font-size: 0.16rem;
+  color: #c11920;
+  float:left;
+}
+.tixian .content ul li:nth-child(2) {
+  width: 100%;
+  height: 0.44rem;
+}
+.tixian .content ul li:nth-child(2) span {
+  line-height: 0.44rem;
+  float:left;
+}
+.tixian .content ul li:nth-child(2) input {
+  font-size: 0.16rem;
+  width: 45%;
+  line-height: 0.42rem;
+  border: none;
+  float:left;
+}
+.tixian .content ul li:nth-child(3) {
+  width: 100%;
+  height: 0.44rem;
+}
+.tixian .content ul li:nth-child(3) span {
+  line-height: 0.44rem;
+  float:left;
+}
+.tixian .content ul li:nth-child(3) font {
+	line-height: 0.44rem;
+  font-size: 0.14rem;
+  width: 65%;
+  height: 0.44rem;
+  overflow: hidden;
+  color: #888888;
+  float:left;
+}
+.tixian .content ul li:nth-child(4) {
+  width: 100%;
+  height: 0.44rem;
+}
+.tixian .content ul li:nth-child(4) span {
+  line-height: 0.44rem;
+  float:left;
+}
+.tixian .content ul li:nth-child(4) span:nth-child(2) {
+	float:left;
+  color: #888888;
+  padding: 0 0 0 0;
+}
+.tixian .content ul li:nth-child(4) font {
+  right:0;
+  position: absolute;
+  width: 6.6%;
+  height: 0.44rem;
+}
+.tixian .content ul li:nth-child(4) font img {
+  width: 0.08rem;
+  height: 0.15rem;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+#tanchu .yinhang .bankname{
+	padding: 0 0rem 0 0rem;
+}
+.tixian .content ul li:nth-child(5) {
+  width: 100%;
+  height: 0.44rem;
+  position: relative;
+}
+.tixian .content ul li:nth-child(5) span {
+  padding: 0 2.5% 0 5%;
+  line-height: 0.44rem;
+}
+.tixian .content ul li:nth-child(5) input {
+  font-size: 0.16rem;
+  width: 28%;
+  border: none;
+}
+.tixian .content ul li:nth-child(5) font {
+  position: absolute;
+  font-size: 0.12rem;
+  color: #fff;
+  line-height: 0.35rem;
+  width: 26%;
+  height: 0.35rem;
+  background: #c11920;
+  right: 4%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  border-radius: 0.04rem;
+}
+.tixian .content ul li:nth-child(6) {
+  width: 100%;
+  height: auto;
+  padding-bottom: 0.12rem;
+}
+.tixian .content ul li:nth-child(6) p {
+  width: 88%;
+  padding-left: 5%;
+  font-size: 0.16rem;
+  line-height: 0.19rem;
+  padding-top: 0.12rem;
+}
+.tixian .content ul li:nth-child(6) p span {
+  padding-left: 0;
+  padding: 0 0 0 0;
+  color: #888888;
+}
+.tixian .content ul li:nth-child(6) p span::before {
+  content: "提示：";
+  color: #3e3a39;
+}
+.tixian .content ul li:nth-child(6) p span::after {
+  content: "总业绩指数以晚上9点为准！";
+  color: #c11920;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.49rem;
+  /*background: #c11920;*/
+  color: #fff;
+  font-size: 0.19rem;
+  z-index: 9999;
+}
+.footer span{
+	text-align: center;
+  line-height: 0.49rem;
+}
+.tixian .highcharts-background {
+  background: none;
+}
+.tixian .content_1 {
+  width: 100%;
+  margin-top: -1px;
+  position: relative;
+}
+.tixian .content_1 .names {
+  position: absolute;
+  margin: auto;
+  top: -0.2rem;
+  left: 0;
+  right: 0;
+}
+.tixian .content_1 .names #container-speed {
+  width: 2.46rem;
+  height: 1.42rem;
+  background: none !important;
+}
+.tixian .content_1 .names #container-speed #highcharts-dabkpi8-0 {
+  width: 2.46rem;
+  height: 1.42rem;
+  background: none !important;
+}
+.tixian .content_1 .names #container-speed #highcharts-dabkpi8-0 .highcharts-root {
+  width: 2.46rem;
+  height: 1.42rem;
+  background: none !important;
+}
+.tixian .content_1 .names #container-speed #highcharts-dabkpi8-0 .highcharts-root .highcharts-background {
+  background: none !important;
+}
+.tixian .content_1 .names #container-rpm {
+  display: none;
+}
+#zeZhao {
+  z-index: 99;
+}
+#zeZhao .demo-bgfff {
+  width: 3.30rem;
+  height: 2.40rem;
+  padding: 0;
+  margin: 39% auto;
+  background: white;
+}
+#zeZhao .demo-bgfff .zform-radius .field-shade P {
+  text-align: center;
+  line-height: .37rem;
+  font-family: PingFangSC-Regular;
+  color: #333333;
+  font-size: .15rem;
+}
+#zeZhao .demo-bgfff .zform-radius .field-shade_2 P {
+  text-align: center;
+  line-height: .13rem;
+  font-size: 0.13rem;
+  font-family: PingFangSC-Regular;
+  color: #FF0000;
+  padding-bottom: 0.11rem;
+}
+#zeZhao .demo-bgfff .zform-control {
+  width: 2.76rem;
+  height: 0.66rem;
+  margin: 0 auto;
+}
+#zeZhao .demo-bgfff .zform-control .field-textss1 {
+  position: relative;
+  width: 1.35rem;
+  height: 0.44rem;
+  float: left;
+  box-sizing: border-box;
+  border: 1px #888888 solid;
+}
+#zeZhao .demo-bgfff .zform-control .field-textss1 input {
+  line-height: 0.2rem;
+  width: 1.2rem;
+  height: 0.2rem;
+  text-align: center;
+  font-size: 0.18rem;
+  color: #888888;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: none;
+}
+#zeZhao .demo-bgfff .zform-control .map {
+  width: 0.88rem;
+  height: 0.44rem;
+  float: left;
+  padding-left: 0.06rem;
+}
+#zeZhao .demo-bgfff .zform-control .map span {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 100%;
+  line-height: 0.44rem;
+  border: 1px #888888 solid;
+  box-sizing: border-box;
+}
+#zeZhao .demo-bgfff .zform-control .map span img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  border: none;
+}
+#zeZhao .demo-bgfff .zform-control #code {
+  width: 0.4rem;
+  height: 0.44rem;
+  float: right;
+  position: relative;
+}
+#zeZhao .demo-bgfff .zform-control #code img {
+  width: 0.4rem;
+  height: 0.4rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+#zeZhao .demo-bgfff #verify {
+  width: 2.76rem;
+  height: 0.44rem;
+  font-size: 0.17rem;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 0.11rem;
+  color: #fff;
+  background: #c11920;
+  border-radius: 0.1rem;
+  border: #c11920 1px solid;
+  box-sizing: border-box;
+  line-height: 0.44rem;
+  text-align: center;
+}
+#zeZhao .demo-bgfff #cancel {
+  width: 2.76rem;
+  height: 0.44rem;
+  font-size: 0.17rem;
+  margin: 0 auto;
+  display: block;
+  color: #c11920;
+  background: #fff;
+  border-radius: 0.1rem;
+  border: #c11920 1px solid;
+  box-sizing: border-box;
+  line-height: 0.44rem;
+  text-align: center;
+}
+/*# sourceMappingURL=index.css.map */

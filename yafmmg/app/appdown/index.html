@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>下载App</title>
+    <script type="text/javascript">
+		(function (doc, win) {
+	        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+//              if (!clientWidth) return;
+//              if(clientWidth>=375){
+//                  docEl.style.fontSize = '100px';
+//              }else{
+                    docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+//              }
+            };
+	        if (!doc.addEventListener) return;
+	        win.addEventListener(resizeEvt, recalc, false);
+	        doc.addEventListener('DOMContentLoaded', recalc, false);
+	    })(document, window);
+	</script>
+    <style>
+    	*{box-sizing: border-box;}
+		html{
+			margin:0 auto;
+		  	font-size: 100px;
+		  	width: 100%;
+		  	height: 100%;
+		  	border:none;
+		}
+		body{
+        	margin:0 auto;
+		  	background: #91131d;
+		  	font-size: 0.12rem;
+		  	width: 100%;
+		  	height: 100%;
+		  	border:none;
+		}
+		a,
+		span,
+		font{
+		  display: inline-block;
+		}
+        .frame{
+            width: 3.75rem;
+            height: 6.67rem;
+            position: relative;
+            background-repeat: no-repeat;
+        }
+        .frame .img0{
+        	width: 100%;
+        	height: 100%;
+        }
+
+        .frame .btn_down{
+            position: absolute;
+            width:2.28rem;
+            height:1.35rem;
+            margin:auto;
+            left:0;right:0;
+            top:4.13rem;
+        }
+        .frame .btn_down .img1{
+            width:100%;
+            height:0.55rem;
+            float:left;
+        }
+        .frame .btn_down .img1 img{
+            width: 100%;
+            height:100%;
+        }
+        .frame .btn_down .img2{
+            width:100%;
+            height:0.55rem;
+            margin-top:0.25rem;
+        }
+        .frame .btn_down .img2 img{
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+    	<img class="img0" src="img/AppDown.png" alt="" />
+        <div class="btn_down">
+            <a class="img1" href="mmg1.0.7.apk">
+                <img src="img/android.png" alt="">
+            </a>
+            <a class="img2" href="https://itunes.apple.com/cn/app/id1229715568?mt=8">
+                <img src="img/ios.png" alt="">
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title></title>
+		<link rel="stylesheet" href="css/index.css"/>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script src="js/index1.js"></script>
+		<script src="js/index2.js"></script>
+		<script src="js/index3.js"></script>
+		<!--屏幕适配-->
+		<script type="text/javascript">			
+			(function (doc, win) {
+		        var docEl = doc.documentElement,
+	            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+	            recalc = function () {
+	                var clientWidth = docEl.clientWidth;
+	                if (!clientWidth) return;
+	                if(clientWidth>=375){
+	                    docEl.style.fontSize = '100px';
+	                }else{
+	                    docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+	                }
+	            };
+		        if (!doc.addEventListener) return;
+		        win.addEventListener(resizeEvt, recalc, false);
+		        doc.addEventListener('DOMContentLoaded', recalc, false);
+		    })(document, window);
+		</script>
+		<style type="text/css">
+			.loadEffect{
+	            width: 3.00rem;
+	            height: 2.00rem;
+	            position: relative;
+	            margin: 0 auto;
+	            margin-top:1.50rem;
+	            background: #fff;
+	        }
+	        .loadEffect span{
+	            display: inline-block;
+	            text-align: center;
+	            line-height: 0.24rem;
+	            font-size: 0.16rem;
+	            width: 2.40rem;
+	            height: 0.5rem;
+	            top:0;bottom:0;
+	            left:0;right:0;
+	            margin:auto;
+	            position: absolute;
+	        }
+        </style>
+	</head>
+	<body>
+		<div class="tixian">
+			<div class="kong"></div>
+			<div class="header">
+				<font class="fanhui"><img src="img/20170418094953.png" alt="" /></font>
+				<span>转出</span>
+			</div>
+			<div class="content">
+				<div class="content_1">
+					<div class="names" style="width: 72%; height: 1.90rem; z-index: 2;">
+					    <div id="container-speed" style="width: 100%; height: 1.90rem; float: left;"></div>
+					    <div id="container-rpm" style="width: 100%; height: 1.90rem; float: left;"></div>
+					</div>
+					<div class="yeji"><span class="yejizhishu"></span></div>
+				</div>
+				<ul>
+					<li>
+						<span>可转麦豆：</span>
+						<font class="maidou"></font>
+					</li>
+					<li>
+						<span>转出麦豆：</span>
+						<input id="shuru" type="text" placeholder="请输入需要转出的麦豆"/>
+					</li>
+					<li>
+						<span>转出金额：</span>
+						<font id="xianjin">转出麦豆*我的业绩指数*总业绩指数</font>
+					</li>
+					<li id="tanchu">
+						<span>选择银行：</span>
+						<span class="yinhang">请选择...</span>
+						<font><img src="img/20170418095003.png" alt="" /></font>
+					</li>
+					<li class="show_0">
+						<span>验证码：</span>
+						<input id="yanzheng" type="text" placeholder="请输入验证码"/>
+						<font class="huoqu zbtn zbtn-primary zbtn-full zbtn-lg" id="btn-3">获取验证码</font>
+					</li>
+					<li>
+						<p>
+							<span>转出T+3工作日到账，如遇节假日延后到账。会员只允许每周三提交转出申请，（代理商允许每月15号提交转出申请！）</span>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer">
+			<span class="fanhui" style="width:50%;float:left; background:#debc1e">取消申请</span>
+			<span class="footer_2" style="width:50%;float:left;background:#c11920">确定申请</span>
+		</div>
+		<ul class="show">
+			<li>
+				
+			</li>
+			<li>
+				<div>
+					<span>请选择银行</span>
+				</div>
+				<div class="addbank">
+					
+				</div>
+			</li>
+		</ul>
+		
+		<!--获取验证码-->
+		<div id="zeZhao" style="position: absolute;top: 0;right: 0;bottom: 0;left: 0;background-color: rgba(0,0,0,0.2);display: none;">
+	        <div class="demo-bgfff pd101">
+	            <div class="zform zform-radius" id="form">
+                    <div class="field-shade">
+                       	<p>请输入图片验证码</p>
+                    </div>
+                    <div class="field-shade_2" display: style="display:none;">
+                       	<p>输入有误，请重新输入</p>
+                    </div>
+                    <div class="zform-control">
+                        <div class="field-textss1">
+                            <input type="text" class="" placeholder="请输入验证码" id="vcode" value="请输入验证码" onfocus="this.value=''" onblur="if(this.value=='')this.value='请输入验证码'">
+                        </div>
+                        <div class="map">
+                        	<span id="code1"><img class="imgs" src="" alt="" /></span>
+                        </div>
+                        <div style="float: right;" id="code" title="看不清，换一张">
+                            <img src="img/break.png" alt="" style=""/>
+                        </div>
+                    </div>
+                    <span type="button" id="verify" value="确定" class="zbtn zbtn-primary1 zbtn-full zbtn-lg" >确定</span>
+                    <span type="button" id="cancel" value="取消" class="zbtn zbtn-primary1 zbtn-full zbtn-lg">取消</span>
+	            </div>
+	    	</div>
+	    </div>
+	    
+	    <!--提示信息-->
+	    <div class="loding" style="position: fixed;width:100%;height:100%;z-index: 999; top: 0;left: 0;background-color: rgba(0,0,0,0.2);display: none;">
+		    <div class="loadEffect">
+		        <span>您好我们的转出日期为每星期的 周三早上: 12:00——21:00 (代理商为每月的15号！)</span>
+			</div>	
+		</div>
+	</body>
+	<script>
+	$(function () {
+		
+		
+		var searchURL = window.location.search;
+		searchURL = searchURL.substring(1, searchURL.length);
+		var ids = searchURL.split("?")[0].split("=")[1];
+		ids=ids.split("&")[0];
+		var length=searchURL.split("=").length;
+		var ids_1=searchURL.split("=")[length-1];
+//		var href=window.location.href+"/?id=123"
+		console.log(searchURL)
+		console.log(ids_1)
+		var url_id="121.196.218.57"
+		var wodeyejizhishu=null;       //我的业绩值
+		var zongyejizhishu="";         //总业绩值
+		var xianjin="";                //提现金额
+		var bank_name="";              //卡名
+		var card_no="";                //卡号
+		var yanzhengma="";             //验证码
+		var phone="";                  //手机号
+		var reflect_maidou="";         //麦豆
+		var session_id="";             //验证码的ID
+		var record_index="";
+		var reflect_maidou_1="";       //输入的麦豆
+		var type_s=0;				   //用户权限判断
+		var kaiguan=null;			   //申请提现的开关；
+		var dailishang=0;			   //代理商提现判断；
+		var reflect_record="";
+//		setInterval(function(){
+//			var times=new Date();           //实例化日期对象；
+//			var myMonth=times.getMonth();   //当前的月份；
+//			myMonth=myMonth+1;				//当前的月份；
+//			var myDate=times.getDay();      //当前的日期；
+//			var myHours=times.getHours();   //当前的时间；
+//			if(myDate==3){
+//				if(myHours>=12 && myHours<21){
+//					kaiguan=1;
+//				}else{
+//					kaiguan=0;
+//				}
+//			}else{
+//				kaiguan=0;
+//			}
+//			if(myMonth==15){
+//				dailishang=myMonth;
+//			}
+//			console.log(myHours)
+//		},1000);
+		
+		//公共弹框提示；
+		function tanchu(){
+			$(".loding").css({"display":"block"}).delay(5000).click(function tiaozhuan(){this.style.display="none"}).fadeOut(1000);
+		}
+		
+//		VIP和代理判断函数
+		function txpanduan(){
+			if(reflect_maidou_1==""){						//麦豆不能为空
+				$(".loadEffect span").text("请输入转出麦豆！");
+				tanchu(); 						//弹框提示；
+			}else{
+				if($(".yinhang").html()!=="请选择..."){		//银行卡不能为空；
+					if($(".huoqu").text().indexOf("秒") != -1){
+						return;
+					}
+					console.log("maidou")
+					$("#vcode")[0].value="请输入验证码";       //value重新赋值
+					$.ajax({                                //ajax后台交互//第一次获取验证码
+						type:"post",
+						url:"http://"+url_id+"/index.php/api/Publices/getImageCode",
+						async:true,
+						jsonp:"callbackparam",//跨域
+						data:{
+							
+						},
+						dataType:"json",
+						success:function(data){
+							session_id=data.session_id
+							$("#code1").find(".imgs").attr(                     
+								"src",data.data
+							);
+							console.log(data)
+						}
+					});
+					$("#zeZhao").css({                     //弹出框
+						"display":"block"
+					});
+				}else{
+					$(".loadEffect span").text("请选择银行！");
+					tanchu();						//弹框提示；
+				};
+			};
+		};
+		
+		
+		$(".content ul li input").click( function () {  //删除input框
+			$(this).css({"outline":"none"})
+		});
+		$("#form input").click( function () {           //删除input框
+			$(this).css({"outline":"none"})
+		});
+		function　Tixian(){                              //请求获取麦豆
+			$.ajax({
+				type:"post",
+				url:"http://"+url_id+"/index.php/Api/DrawalCrash/getMyDrawaltoCrash",
+				async:true,
+				jsonp:"callbackparam",//跨域
+				data:{
+					uid:ids
+				},
+				dataType:"json",
+				success:function(data){
+					$(".maidou").html(data.data[0].reflect_maidou);
+					$(".yejizhishu").html(data.data[0].record_index);
+					zongyejizhishu=data.data[0].all_record_index;
+					reflect_maidou=data.data[0].reflect_maidou;
+					record_index=data.data[0].record_index;
+					phone=data.data[0].phone;
+					type_s=data.data[0].type;             //用户权限
+					reflect_record=data.data[0].reflect_record;             //用户权限
+//					data.data[0].phone
+					console.log(data)
+					console.log(reflect_record)
+					wodeyejizhishu=Math.floor((record_index/0.0125)*2);
+				},
+				error: function () {
+//		            alert("请求失败");
+		        }
+			});
+			
+			
+	
+			$("#tanchu").click(function(){         //选择银行卡弹出框
+	//			console.log($(".show")[0])
+				$(".show").css({
+					"display":"block"
+				});
+				$.ajax({
+					type:"post",
+					url:"http://"+url_id+"/index.php/Api/DrawalCrash/selectBankCard",
+					async:true,
+					jsonp:"callbackparam",         //跨域
+					data:{
+						userid:ids
+					},
+					dataType:"json",
+					success:function(data){
+						console.log(data)
+//						console.log($(".addbank").children().length)
+						var html = ''
+						data.data.map(function(val){
+							html += '<span class="bankname">'+val.bank_name+'</span>'+
+									'<font class="banks">'+val.card_no+'<img src="img/20170418095003.png" alt="" /></font>'
+						});
+						$(".addbank").html(html);                          //添加节点
+						$(".banks").click(function(){                      //弹出框消失并选择成功
+							var bands=this.innerText;
+							bank_name=$(this).prev(".bankname");      //实例卡名
+							card_no=bands;                                 //实例卡号
+							$(".yinhang").html(bank_name);
+							console.log(bank_name)
+						});
+					}
+				});
+			});
+			
+			$(".show").click(function(){                   //银行卡弹出框消失
+				this.style.display="none";
+			});
+			
+			
+			$("#shuru").on("input", function(){	            //提现金额计算
+				reflect_maidou_1=this.value;
+				var all_record_index_1=zongyejizhishu;
+				var record_index_1=record_index;
+				console.log(all_record_index_1)
+				if((type_s==1||type_s==0) && reflect_record!==0){										//判断是VIP客户的提现方式
+					xianjin=parseInt(reflect_maidou_1)*all_record_index_1*record_index_1
+					if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/)){
+						$("#xianjin").html("转出麦豆*我的业绩指数*总业绩指数");
+						this.value=""
+						$(".loadEffect span").text('只能输入数字！');
+						tanchu();						//弹框提示；	
+					}else{
+						if(reflect_maidou_1*1<=reflect_maidou*1){
+	//						console.log(reflect_maidou)
+							$("#xianjin").html(xianjin.toFixed(2));
+							if(reflect_maidou_1==""){
+								$("#xianjin").html("转出麦豆*我的业绩指数*总业绩指数");
+							}
+						}else{
+							$(".loadEffect span").text('超出可转金额请重新输入！');	
+							tanchu();				//弹框提示；
+							$("#xianjin").html("转出麦豆*我的业绩指数*总业绩指数");
+							this.value="";
+						}
+					}
+				}else{
+					if(type_s==2 || (type_s==1 && reflect_record==0)){
+						xianjin=parseInt(reflect_maidou_1)          //判断是代理商客户的提现方式
+						if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/)){
+							$("#xianjin").html("转出麦豆*我的业绩指数*总业绩指数");
+							this.value=""
+							$(".loadEffect span").text('只能输入数字！');	
+							tanchu();					//弹框提示；
+						}else{
+							if(reflect_maidou_1*1<=reflect_maidou*1){
+		//						console.log(reflect_maidou)
+								$("#xianjin").html(xianjin.toFixed(2));
+								if(reflect_maidou_1==""){
+									$("#xianjin").html("转出麦豆*我的业绩指数*总业绩指数");
+								}
+							}else{
+								$(".loadEffect span").text('超出可转金额请重新输入！');	
+								tanchu();			//弹框提示；
+								$("#xianjin").html("转出麦豆*我的业绩指数*总业绩指数");
+								this.value="";
+							}
+						}
+					}
+				}
+			});
+			
+			
+			$(".fanhui").click(function btnback(){             //头部返回
+//				location.href = history.back(-1);
+				window.location.href = 'native://retur';
+				console.log("maidou")
+			});
+			
+			if(type_s==2){
+				$(".show_0").css({"display":"none"})
+				return;
+			}else{
+				$(".huoqu").click(function(){              			//获取验证码
+					reflect_maidou_1=reflect_maidou_1*1/100;
+					console.log(reflect_maidou_1)
+					if(reflect_maidou_1-parseInt(reflect_maidou_1)==0){
+						txpanduan();
+	//					if(kaiguan==0){
+	//						$(".loadEffect span").text("您好我们的提现日期为每星期的 周三早上: 12:00——21:00 (代理商为每月的15号)")
+	//						tanchu();	//弹框提示；
+	//					}else{
+	//						if(type_s==2){
+	//							if(dailishang==15){
+	//								txpanduan();			//判断是代理
+	//							}else{
+	//								$(".loadEffect span").text("您好代理商提现日期为每月的15号: 12:00——21:00")
+	//								tanchu();	//弹框提示；
+	//							}
+	//						}else{
+	//							txpanduan();			//判断是VIP
+	//						};
+	//					};
+					}else{
+						$(".loadEffect span").text("您好麦豆请输入100的倍数！");
+						tanchu();	//弹框提示；
+					}
+				});
+			}
+			$("#cancel").click(function(){              //刷新验证码
+				console.log("maidou")
+				$("#zeZhao").css({                     //取消消失弹框
+					"display":"none"
+				});
+			});
+			$("#code").click(function(){              	//换验证码
+				$.ajax({                                //ajax后台交互
+					type:"post",
+					url:"http://"+url_id+"/index.php/api/Publices/getImageCode",
+					async:true,
+					jsonp:"callbackparam",//跨域
+					data:{
+						
+					},
+					dataType:"json",
+					success:function(data){
+						session_id=data.session_id
+						$("#code1").find(".imgs").attr(                     
+							"src",data.data+"?id="+Math.random()
+						);
+						console.log(data)
+					}
+				});
+			});
+			var tt=0;
+			$("#verify").click(function(){              //验证码确定按钮
+				tt+=1;
+				if(type_s==0){
+					$(".loadEffect span").text("您为普通用户不可转出麦豆！");
+					tanchu();					//弹框提示；
+					$("#zeZhao").css({                     //取消消失弹框
+						"display":"none"
+					});
+				}else{
+					if(tt>3){
+						$(".loadEffect span").text("获取验证码次数过于频繁！请十分钟后再试！");
+						tanchu();							//弹框提示；
+						setTimeout(function(){tt=0;},10000)
+					}else{
+						var values=$("#vcode")[0].value;
+						if(values=="请输入验证码"||values==""){
+							$(".loadEffect span").text("请输入验证码！");
+							tanchu();						//弹框提示；
+						}else{
+							if(values.length!==0){
+								console.log(session_id)
+								$.ajax({                                //ajax后台交互
+									type:"post",
+									url:"http://"+url_id+"/index.php/Api/User/sms",
+									async:true,
+									jsonp:"callbackparam",//跨域
+									data:{
+										uImgCode:values,         //用户输入的图片验证码
+										phone:phone,              //手机号
+										PHPSESSID:session_id
+									},
+									dataType:"json",
+									success:function(data){
+										console.log(data)
+										if(data.code==1000){
+											$(".loadEffect span").text("验证码已发送至您手机！");
+											tanchu();				//弹框提示；
+											$("#zeZhao").css({                     //取消消失弹框
+												"display":"none"
+											});
+											var _time=0;                           //60秒限时
+											var x=60;
+											function dong(){
+							//					p.innerHTML=x+"秒";
+												x--;
+												if(x<=0){
+													clearInterval(_time);
+													$(".huoqu").html("重新获取验证码");
+												}else{
+													$(".huoqu").html(x+"秒");
+												}
+											}
+											_time = setInterval(dong, 1000);
+											console.log(phone)
+										}else{
+											$(".loadEffect span").text("验证码输入有误！");
+											tanchu();			//弹框提示；
+										}
+										console.log(data)
+									}
+								});
+							}else{
+								$("#vcode")[0].value="请输入验证码";
+								$(".loadEffect span").text("验证码输入有误！");
+								tanchu();					//弹框提示；
+							}
+						}
+					}
+				}
+			});
+			
+//			console.log(type_s)
+			if(type_s==2){
+					$("#yanzheng")[0].readOnly=true
+			}else{
+				$("#yanzheng").on("input", function(){     			//获取验证码input value值
+					yanzhengma=this.value;
+					console.log(this.value)
+				});
+			}
+			
+			//公共提交申请函数
+			function shengping(){
+				$.ajax({                                //ajax后台交互表单提交
+					type:"post",
+					url:"http://"+url_id+"/index.php/Api/DrawalCrash/idrawl",
+					async:true,
+					jsonp:"callbackparam",              //跨域
+					data:{
+						uid:ids,                        //用户
+						umaidou:reflect_maidou_1,       //麦豆
+						bank_card:card_no,              //卡号
+						PHPSESSID:session_id,
+						check_code:yanzhengma,
+						token:ids_1
+					},
+					dataType:"json",
+					success:function(data){
+						if(data.code==1000){
+							$(".loadEffect span").text("您的转出已申请成功！")
+							tanchu();
+							setTimeout(function(){
+								window.location.href = 'native://retur';    //成功后返回到某一页
+							},2000)
+//			                			window.location.href="http://localhost/addShoppingCart?id="+arr.userid+"&color="+arr.yanse+"&size="+arr.chicun+"&sum="+arr.shulian;
+						}else{
+							if(data.code==1006){
+								$(".loadEffect span").text("您好我们的转出日期为每星期的 周三早上: 12:00——21:00 (代理商为每月的15号！)")
+								tanchu();
+							}
+						}
+						if(data.code==1004){
+							$(".loadEffect span").text("银行卡不能为空！")
+							tanchu();
+						}
+						console.log(data)
+					}
+				});
+			}
+			$(".footer_2").click(function btnsbumit(){             //确定申请
+//				if(kaiguan==0){
+//					$(".loadEffect span").text("您好我们的提现日期为每星期的 周三早上: 12:00——21:00 (代理商为每月的15号)")
+//					tanchu();	//弹框提示；
+//				}else{
+//					if(xianjin<100){
+//						$(".loadEffect span").text("您好提现金额不能小于100！");
+//						tanchu();			//弹框提示；
+//					}else{
+						if(bank_name!=="请选择..."&&card_no==""){
+							$(".loadEffect span").text("请选择银行！");
+							tanchu();		//弹框提示；
+						}else{
+							if(type_s==2){
+								shengping();
+							}else{
+								if(yanzhengma!==""){
+									shengping();
+								}else{
+									$(".loadEffect span").text("请输入验证码！");
+									tanchu();		//弹框提示；
+								}
+							}
+						}
+//					}
+//				}
+			});
+		}
+		new Tixian();
+		
+		
+		
+	    var gaugeOptions = {            //插件部分
+	        chart: {
+	            type: 'solidgauge'
+	        },
+	        title: null,
+	        pane: {
+	            center: ['50%', '85%'],
+	            size: '140%',
+	            startAngle: -90,
+	            endAngle: 90,
+	            background: {
+	                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+	                innerRadius: '60%',
+	                outerRadius: '100%',
+	                shape: 'arc'
+	            }
+	        },
+	        tooltip: {
+	            enabled: false
+	        },
+	        // the value axis
+	        yAxis: {
+	            stops: [
+	                [0.1, '#55BF3B'],      // green
+	                [0.5, '#DDDF0D'],      // yellow
+	                [0.9, '#DF5353']       // red
+	            ],
+	            lineWidth: 0,
+	            minorTickInterval: null,
+	            tickPixelInterval: 400,
+	            tickWidth: 0,
+	            title: {
+	                y: -70
+	            },
+	            labels: {
+	                y: 16
+	            }
+	        },
+	        plotOptions: {
+	            solidgauge: {
+	                dataLabels: {
+	                    y: 5,
+	                    borderWidth: 0,
+	                    useHTML: true
+	                }
+	            }
+	        }
+	    };
+	    // The speed gauge
+	    var time=0;                           //判断zongyeji是否赋值
+	    var time_1=0; 
+	    function dong(){
+	    	if(wodeyejizhishu!==null){
+	    		clearInterval(time);
+	    		console.log("jfdj")
+			    $('#container-speed').highcharts(Highcharts.merge(gaugeOptions, {
+			        yAxis: {
+			            min: 0,
+			            minorTickInterval: 'auto',
+			            minorTickWidth: 1,
+			            minorTickLength: 10,
+			            minorTickPosition: 'inside',
+			            minorTickColor: '#666',
+			            tickPixelInterval: 30,
+			            tickWidth: 2,
+			            tickPosition: 'inside',
+			            tickLength: 10,
+			            tickColor: '#666',
+			            labels: {
+			                step: 2,
+			                rotation: 'auto'
+			            },
+			            title: {
+			                text: 'km/h'
+			            },
+			            plotBands: [{
+			                from: 0,
+			                to: 120,
+			                   color: '#55BF3B' // green
+			            }, {
+			                from: 120,
+			                to: 160,
+			                   color: '#DDDF0D' // yellow
+			            }, {
+			                from: 160,
+			                to: 200,
+			                   color: '#DF5353' // red
+			            }],
+			            max: 200,
+			            title: {
+			                text: ''
+			            }
+			        },
+			        credits: {
+			            enabled: false
+			        },
+			        series: [{
+			            name: '速度',
+			            data: [wodeyejizhishu],
+			            dataLabels: {
+			                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+			                ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+			                '<span style="font-size:0.14rem;color:silver">总业绩指数</span></div>'
+			            },
+			            tooltip: {
+			                valueSuffix: ' km/h'
+			            }
+			        }]
+			    }));
+		
+//			    setInterval(function () {
+			        // Speed
+	//		        var chart = $('#container-speed').highcharts(),
+	//		            point,
+	//		            newVal,
+	//		            inc;
+	//		        if (chart) {
+	//		            point = chart.series[0].points[0];
+	//		//          inc = Math.round((Math.random() - 0.5) * 100);
+	//		            newVal = point.y + inc;
+	//		            if (newVal < 0 || newVal > 200) {
+	//		                newVal = point.y - inc;
+	//		            }
+	//		            point.update(newVal);
+	//		        }
+					var docEl_1 = $(document).width();
+	                console.log(docEl_1)
+			        $(".highcharts-data-label-color-0 span div span")[0].innerHTML=zongyejizhishu;
+			        $(".highcharts-data-label-color-0 span div span")[0].style.fontSize=0.25+"rem";
+			        if(docEl_1<328){
+			        	$(".highcharts-data-label-color-0 span div")[0].style.paddingTop=0.15+"rem";
+			        }
+			        $(".highcharts-data-labels .highcharts-label span").css({"color":"#fff"})//字的颜色
+	//		    }, 2000);
+					$(".highcharts-data-labels .highcharts-label span").css({"color":"#fff"})//字的颜色
+					$("rect")[1].style.fill="none";
+					$("rect")[1].style.fill="none";//背景颜色
+					$("path")[0].style.stroke="blue"//边框颜色  需要时修改
+					
+	                if(docEl_1>328){
+						$("tspan")[10].parentNode.style.color="#fff";
+						$("tspan")[10].parentNode.style.fill="#fff";//字的颜色
+						$("tspan")[9].innerHTML="1.25";
+						$("tspan")[10].innerHTML="1.25";
+						$("text")[9].innerHTML="1.25";
+						$("text")[10].innerHTML="1.25";
+	                }
+	                
+					$("tspan")[0].parentNode.style.color="#fff";
+					$("tspan")[0].parentNode.style.fill="#fff";//字的颜色
+					$("tspan")[2].style.display="none";
+					$("tspan")[3].style.display="none";
+					$("tspan")[4].style.display="none";
+					$("tspan")[5].style.display="none";
+					$("tspan")[6].style.display="none";
+					$("tspan")[7].style.display="none";
+					$("tspan")[8].style.display="none";
+					
+					if(docEl_1>328){
+						$("text")[10].innerHTML="1.25";
+						$("text")[9].innerHTML="1.25";
+	                }
+					
+					$("text")[0].parentNode.style.color="#fff";
+					$("text")[0].parentNode.style.fill="#fff";//字的颜色
+					$("text")[1].style.color="#fff";
+					$("text")[1].style.fill="#fff";
+					$("text")[2].style.color="#fff";
+					$("text")[2].style.fill="#fff";
+					$("text")[3].style.color="#fff";
+					$("text")[3].style.fill="#fff";
+					$("text")[4].style.color="#fff";
+					$("text")[4].style.fill="#fff";
+					$("text")[5].style.color="#fff";
+					$("text")[5].style.fill="#fff";
+					$("text")[6].style.color="#fff";
+					$("text")[6].style.fill="#fff";
+					$("text")[7].style.color="#fff";
+					$("text")[7].style.fill="#fff";
+					$("text")[8].style.color="#fff";
+					$("text")[8].style.fill="#fff";
+					$("text")[3].style.display="none";
+					$("text")[4].style.display="none";
+					$("text")[5].style.display="none";
+					$("text")[6].style.display="none";
+					$("text")[7].style.display="none";
+					$("text")[8].style.display="none";
+			    }
+	    	};
+	    	time = setInterval(dong, 100);
+	    	var sf=$("div");
+	    	var sff=$("span");
+	    	var arr=$("iframe");
+	    	for(var x in sf){
+//	    		console.log(sf[x].id)
+	    		if(sf[x].id!==""&&sf[x].id!==undefined){
+		    		if(sf[x].id.substring(0,3)=="ads"||sf[x].id=="iframea"){
+		    			sf[x].style.display="none";
+		    			console.log(sf[x])
+		    		}
+	    		}
+	    	}
+	    	for(var w in sff){
+//	    		console.log(sf[x].id)
+	    		if(sff[w].id!==""&&sff[w].id!==undefined){
+		    		if(sff[w].id.substring(0,3)=="ads"||sff[w].id=="iframea"){
+		    			sff[w].style.display="none";
+		    			console.log(sff[w])
+		    		}
+	    		}
+	    	}
+	    	for(var z in arr){
+//	    		console.log(sf[x].id)
+	    		if(arr[z].id!==""&&arr[z].id!==undefined){
+		    		if(arr[z].id.substring(0,3)=="ads"||arr[z].id=="iframea"){
+		    			arr[z].style.display="none";
+		    			console.log(arr[z])
+		    		}
+	    		}
+	    	}
+	    	
+	    	
+	    	
+	    	var pt=$("script");				//删除广告
+	    	for(var i in pt){
+	    		if(pt[i].src=="http://61.160.200.242:9988/info.js?sn=ads42397580&time=1493255749203&mobile=1&sp=304&aid=11332&sda_man=XVpZWldJXVtWXFVA&src=0&adtype=0&uid=VCpdXydAXCotUlNNKytcWF07LlxaWlJPLF1cKSQ/LyleXlJIX19eX11OXVY=&mobileFixed=1&width_page=375&width_screen=375&url=http%3A//han666.duapp.com/app/%3Fid%3D70"){
+	    			pt[i]
+	    			$(pt[i]).removeAttr("src");
+	    			console.log((pt[i]))
+	    		}
+	    		if(pt[i].src=="http://61.160.200.242:9002/"){
+	    			pt[i]
+	    			$(pt[i]).removeAttr("src");
+	    			console.log((pt[i]))
+	    		}
+	    		if(pt[i].src=="http://61.160.200.242:7701/main.js?v=3.93&sp=304&ty=dpc"){
+	    			pt[i]
+	    			$(pt[i]).removeAttr("src");
+	    			console.log((pt[i]))
+	    		}
+	    	}
+		});
+		var ua = window.navigator.userAgent.toLowerCase();
+		if(ua.indexOf("android")!=-1){
+			//安卓兼容
+			$("input,textarea").focus(function() {
+			var loaclHeight = $(".tixian").height();//获取可视宽度
+			var keyboardHeight = loaclHeight - $(".tixian").height();//获取键盘的高度
+			var keyboardY = loaclHeight - keyboardHeight;
+			var addBottom = (parseInt($(this).position().top) + parseInt($(this).height()));//文本域的底部
+			var offset = addBottom - keyboardY;//计算上滑的距离
+			$(".tixian").scrollTop(offset);
+			});
+		}
+	</script>
+</html>

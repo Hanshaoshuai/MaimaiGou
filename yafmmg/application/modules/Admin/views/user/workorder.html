@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/public/admin/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/admin/css/style.css"/>
+    <link href="/public/admin/assets/css/codemirror.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/admin/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="/public/admin/assets/css/font-awesome.min.css" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="/public/admin/assets/css/font-awesome-ie7.min.css" />
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="/public/admin/assets/css/ace-ie.min.css" />
+    <![endif]-->
+    <script src="/public/admin/assets/js/jquery.min.js"></script>
+
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <![endif]-->
+
+    <!--[if !IE]> -->
+
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    </script>
+
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+    </script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    </script>
+    <script src="/public/admin/assets/js/bootstrap.min.js"></script>
+    <script src="/public/admin/assets/js/typeahead-bs2.min.js"></script>
+    <!-- page specific plugin scripts -->
+    <script src="/public/admin/assets/js/jquery.dataTables.min.js"></script>
+    <script src="/public/admin/assets/js/jquery.dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="/public/admin/js/H-ui.js"></script>
+    <script type="text/javascript" src="/public/admin/js/H-ui.admin.js"></script>
+    <script src="/public/admin/assets/layer/layer.js" type="text/javascript" ></script>
+    <script src="/public/admin/assets/laydate/laydate.js" type="text/javascript"></script>
+    <title>用户列表</title>
+</head>
+
+<body>
+<div class=" clearfix">
+    <div id="Member_Ratings">
+        <div class="d_Confirm_Order_style">
+            <div class="search_style">
+                <div class="title_names">搜索查询</div>
+                <ul class="search_content clearfix">
+                    <li><label class="l_f">问题类型：</label>
+                        <span class="add_name">
+                         <select name="type" aria-controls="sample-table" id="type">
+                             <option value="" selected>选择问题类型</option>
+                             <?php foreach($workType as $v){ ?>
+                             <option value="<?php echo $v['id']?>" <?php if($params['type']==$v['id']){echo 'selected';}?>><?php echo $v['typename']?></option>
+                             <!---->
+                             <?php }?>
+                         </select></span></li>
+                       <li><label class="l_f">处理状态：</label>
+                        <span class="add_name">
+                         <select name="sta" aria-controls="sample-table" id="sta">
+                             <option value=" " selected>选择处理状态</option>
+                             <option value="1" <?php if($params['sta']== 1){echo 'selected';}?>>未处理</option>
+                             <option value="0" <?php if($params['sta']==='0'){echo 'selected';}?>>已处理</option>
+                         </select></span></li>
+                    <li><label class="l_f">提交时间</label><input value="<?php echo $params['add_time']?>" name="searchTime" class="inline laydate-icon" id="start" style=" margin-left:10px;"></li>
+                    <li><label class="l_f">会员账号</label><input value="<?php echo $params['keyword']?>" name="keyword" type="text" id="keyword"  class="text_add" placeholder="输入会员账号"  style=" width:400px"/>
+                    </li>
+
+                    <li style="width:90px;"><button type="button" class="btn_search" onclick="searchWorkOrder()"><i class="icon-search"></i>查询</button></li>
+                </ul>
+            </div>
+            <!---->
+            <div id="searchDrawal">
+                <label class="l_f">每页显示：</label>
+                        <span class="add_name">
+                            <input type="hidden" id="page" value="<?php echo $params['page'] ?>">
+                         <select name="pageSize" aria-controls="sample-table" id="pageSize">
+                             <option value="10" <?php if($params['pageSize']==10){echo 'selected';}?>>10</option>
+                             <option value="20" <?php if($params['pageSize']==20){echo 'selected';}?>>20</option>
+                             <option value="50" <?php if($params['pageSize']==50){echo 'selected';}?>>50</option>
+                             <option value="100" <?php if($params['pageSize']==100){echo 'selected';}?>>100</option>
+                         </select></span>
+                <a href="javascript:ovid()" onclick="updataToids(0)" class="btn btn-success"><i class="icon-ok-sign"></i>批量处理</a>
+                <a href="javascript:ovid()" onclick="delToids()" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
+<!--
+                <span class="r_f"><a href="javascript:ovid()" onclick="toExcel()" class="btn btn-white"><i class="icon-edit-sign"></i>导出表格</a> </span>
+-->
+                <span class="r_f">共：<b><?php echo $sum ?></b>条</span>
+                <div class="table_menu_list">
+                    <table class="table table-striped table-bordered table-hover" id="sample-table">
+                        <thead>
+                        <tr>
+                            <th width="25"><label><input type="checkbox" class="ace" value="0"><span class="lbl"></span></label></th>
+                            <th width="80">ID</th>
+                            <th width="100">用户名</th>
+                            <th width="150">会员类型</th>
+                            <th width="120">问题类型</th>
+                            <th width="150">内容</th>
+                            <th width="150">提交时间</th>
+                           <!-- <th width="70">后台操作账号</th>-->
+                            <th width="70">处理状态</th>
+                            <th width="150">处理时间</th>
+                            <th width="250">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach( $res as $v){?>
+                        <tr>
+                            <td><label><input type="checkbox" id="checkbox" class="ace" value="<?php echo $v['id']?>"><span class="lbl"></span></label></td>
+                            <td><?php echo $v['userid']?></td>
+                            <td><?php echo $v['phone']?></td>
+                            <td><?php if($v['user_type']==0){
+                                  echo '普通会员';}elseif($v['user_type']==1){
+                                  echo 'Vip会员';}else{
+                                  echo '代理商';
+                                  }
+                                  ?>
+                            </td>
+                            <td><?php echo $v['typename']?></td>
+                            <td><span style="cursor:pointer"  onclick="member_show(<?php echo $v['id']?>)"><?php echo $v['content']?><a><?php echo $v['img']?></a></span></td>
+                          <!--  <td class="text-l"><?php echo $v['content']?></td>-->
+                            <td><?php echo $v['add_time']?></td>
+                           <!-- <td><?php echo $v['add_time']?></td>-->
+                            <td class="td-status">
+                                <?php if($v['sta']==1){
+                                 echo '<span class="label label-defaunt radius">未处理</span>';
+                                }elseif($v['sta']==0){
+                                 echo '<span class="label label-success radius">已处理</span>';
+                                }else{
+                                 echo '<span class="label label-success radius">已处理</span>';
+                                }
+                                ?>
+                            </td>
+                            <td><?php echo $v['update_time']?></td>
+                            <td class="td-manage">
+                                <a onClick="member_start(this,<?php echo $v['id']; ?>)"  href="javascript:;" title="处理"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                <a onClick="member_stop(this,<?php echo $v['id']; ?>)"  href="javascript:;" title="删除"  class="btn btn-xs btn-warning"><i class="icon-trash bigger-120"></i></a>
+                            </td>
+                        </tr>
+
+                        <div class="member_content" id="add_menber<?php echo $v['id']?>" style="display:none">
+                            <ul>
+                                <p style="font-size: 20px"> <?php echo $v['content'];?></p>
+                                <img width="320px" src="<?php echo IMG_URL.$v['img1'];?>" style="display:<?php if(!$v['img1']){echo 'none';}?>">
+                                <img width="320px" src="<?php echo IMG_URL.$v['img2'];?>" style="display:<?php if(!$v['img2']){echo 'none';}?>">
+                                <img width="320px" src="<?php echo IMG_URL.$v['img3'];?>" style="display:<?php if(!$v['img3']){echo 'none';}?>">
+
+                            </ul>
+                        </div>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                    <?php echo $page ?>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+
+    $("#pageSize").bind("change",function(){
+        var pageSize=$(this).val();
+        //alert(pageSize);
+        searchWorkOrder(pageSize)
+        //location.href='userList?pageSize='+pageSize;
+    });
+    $("#type").bind("change",function(){
+        searchWorkOrder(pageSize)
+
+    });
+    /*搜索记录*/
+    function searchWorkOrder(pageSize){
+        var type=$("#type").val();
+        var stime=$("#start").val();
+        var sta=$("#sta").val();
+        var page=$("#page").val();
+        var kw=$("#keyword").val();
+        location.href='workOrder?type='+type+'&sta='+sta+'&add_time='+stime+'&keyword='+kw+'&pageSize='+pageSize+'&page='+page;
+
+    }
+
+    function toExcel(){
+        var type=$("#type").val();
+        var stime=$("#start").val();
+        var pageSize=$("#pageSize").val();
+        var page=$("#page").val();
+        location.href='workOrder?type='+type+'&add_time='+stime+'&pageSize='+pageSize+'&page='+page+'&excel=1';
+    }
+    /*用户-删除*/
+    function member_del(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            $(obj).parents("tr").remove();
+            layer.msg('已删除!',{icon:1,time:1000});
+        });
+    }
+    laydate({
+        elem: '#start',
+        event: 'focus'
+    });
+    /*用户-停用*/
+    function member_stop(obj,id){
+        var id=id;
+        var data ={'id':id,'_':Math.random()}
+        layer.confirm('确认要删除吗？',function(index){
+            $.post("delWorkflow", data ,function(data){
+                ajaxobj=eval("("+data+")");
+                if (ajaxobj.code == 1004) {
+                    layer.msg('操作失败！', {icon: 5, time: 1000});
+                } else {
+                    layer.msg('操作成功!',{icon: 6,time:1000});
+                }
+            })
+            location.reload();
+        });
+    }
+
+    /*用户-启用*/
+    function member_start(obj,id){
+        var id=id;
+        var data ={'id':id,'sta':'0','_':Math.random()}
+        layer.confirm('确认处理？',function(index){
+            $.post("updateWorkSta", data ,function(data){
+                ajaxobj=eval("("+data+")");
+                if (ajaxobj.code == 1004) {
+                    layer.msg('处理失败！', {icon: 5, time: 1000});
+                } else {
+                    $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已处理</span>');
+                    layer.msg('处理成功!',{icon: 6,time:1000});
+                }
+            })
+            location.reload();
+        });
+    }
+
+    function member_show(id){
+        var id=id
+        layer.open({
+            type: 1,
+            title: '内容详情',
+            maxmin: true,
+            shadeClose: true, //点击遮罩关闭层
+            area : ['900px' , '600px'],
+            content:$('#add_menber'+id)
+        });
+    }
+    //批量操作
+    function updataToids(status){
+        var id_array=new Array();
+        $('input[id="checkbox"]:checked').each(function(){
+            id_array.push($(this).val());//向数组中添加元素
+        });
+        // var idstr=id_array.join(',');//将数组元素连接起来以构建一个字符串
+        // alert(idstr);
+        var data ={'id':id_array,'sta':status,'_':Math.random()}
+        layer.confirm('确认处理吗？',function(index){
+            $.post("updateWorkSta", data ,function(data){
+                ajaxobj=eval("("+data+")");
+                if (ajaxobj.code == 1004) {
+                    layer.msg('处理失败！', {icon: 5, time: 1000});
+                } else {
+                    window.location.reload();
+                    layer.msg('处理成功!',{icon: 6,time:1000});
+                }
+            })
+
+        });
+
+    }
+
+    //批量删除
+    function delToids(){
+        var id_array=new Array();
+        $('input[id="checkbox"]:checked').each(function(){
+            id_array.push($(this).val());//向数组中添加元素
+        });
+        // var idstr=id_array.join(',');//将数组元素连接起来以构建一个字符串
+        // alert(idstr);
+        var data ={'id':id_array,'_':Math.random()}
+        layer.confirm('确认处理吗？',function(index){
+            $.post("delWorkflow", data ,function(data){
+                ajaxobj=eval("("+data+")");
+                if (ajaxobj.code == 1004) {
+                    layer.msg('处理失败！', {icon: 5, time: 1000});
+                } else {
+                    window.location.reload();
+                    layer.msg('处理成功!',{icon: 6,time:1000});
+                }
+            })
+
+        });
+
+    }
+</script>
